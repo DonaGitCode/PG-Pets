@@ -1,8 +1,21 @@
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image'
-import { Heart, Briefcase, CheckCircle, ArrowRight } from 'lucide-react'
+import { Heart, Briefcase, CheckCircle, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Programs() {
+  const [expandedCategories, setExpandedCategories] = useState<{[key: string]: boolean}>({})
+  const [expandedSubcategories, setExpandedSubcategories] = useState<{[key: string]: boolean}>({})
+
+  const toggleCategory = (id: string) => {
+    setExpandedCategories(prev => ({ ...prev, [id]: !prev[id] }))
+  }
+
+  const toggleSubcategory = (key: string) => {
+    setExpandedSubcategories(prev => ({ ...prev, [key]: !prev[key] }))
+  }
   const mainCategories = [
     {
       id: 'perros-servicio',
@@ -60,7 +73,7 @@ export default function Programs() {
         },
         {
           name: 'Perros de Asistencia Psiquiátrica (PSD)',
-          description: '⚠️ NO confundir con Soporte Emocional - Realizan TAREAS ENTRENADAS específicas para condiciones psiquiátricas',
+          description: 'IMPORTANTE: NO confundir con Soporte Emocional - Realizan TAREAS ENTRENADAS específicas para condiciones psiquiátricas',
           tasks: [
             'Interrumpir ataques de pánico mediante toque o presión',
             'Aplicar terapia de presión profunda (Deep Pressure Therapy)',
@@ -194,38 +207,65 @@ export default function Programs() {
                           Tipos de Perros de Servicio:
                         </h4>
                         <div className="space-y-4">
-                          {category.subcategories.map((sub, idx) => (
-                            <div key={idx} className="bg-white rounded-lg p-5 border-2 border-gray-200 hover:border-primary-300 transition-colors">
-                              <h5 className="font-bold text-primary-700 mb-2 text-base">
-                                {sub.name}
-                              </h5>
-                              <p className="text-sm text-gray-600 mb-3">
-                                {sub.description}
-                              </p>
-                              {sub.tasks && (
-                                <div className="bg-gray-50 rounded-lg p-3">
-                                  <p className="text-xs font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-                                    Tareas específicas entrenadas:
-                                  </p>
-                                  <ul className="space-y-1">
-                                    {sub.tasks.map((task, taskIdx) => (
-                                      <li key={taskIdx} className="text-xs text-gray-600 flex items-start">
-                                        <span className="text-primary-600 mr-2 mt-1">▸</span>
-                                        <span>{task}</span>
-                                      </li>
-                                    ))}
-                                  </ul>
+                          {category.subcategories.map((sub, idx) => {
+                            const subKey = `${category.id}-${idx}`
+                            const isExpanded = expandedSubcategories[subKey]
+                            
+                            return (
+                              <div key={idx} className="bg-white rounded-lg border-2 border-gray-200 hover:border-primary-300 transition-colors">
+                                <div className="p-5">
+                                  <div className="flex items-start justify-between">
+                                    <div className="flex-1">
+                                      <h5 className="font-bold text-primary-700 mb-2 text-base">
+                                        {sub.name}
+                                      </h5>
+                                      <p className="text-sm text-gray-600">
+                                        {sub.description}
+                                      </p>
+                                    </div>
+                                    <button
+                                      onClick={() => toggleSubcategory(subKey)}
+                                      className="ml-4 flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                                      aria-label={isExpanded ? 'Ocultar detalles' : 'Ver detalles'}
+                                    >
+                                      {isExpanded ? (
+                                        <ChevronUp className="w-5 h-5 text-gray-600" />
+                                      ) : (
+                                        <ChevronDown className="w-5 h-5 text-gray-600" />
+                                      )}
+                                    </button>
+                                  </div>
+                                  
+                                  {isExpanded && (
+                                    <div className="mt-4 space-y-3 animate-in slide-in-from-top-2 duration-200">
+                                      {sub.tasks && (
+                                        <div className="bg-gray-50 rounded-lg p-4">
+                                          <p className="text-xs font-semibold text-gray-700 mb-3 uppercase tracking-wide">
+                                            Tareas específicas entrenadas:
+                                          </p>
+                                          <ul className="space-y-2">
+                                            {sub.tasks.map((task, taskIdx) => (
+                                              <li key={taskIdx} className="text-sm text-gray-700 flex items-start">
+                                                <CheckCircle className="w-4 h-4 text-primary-600 mr-2 mt-0.5 flex-shrink-0" />
+                                                <span>{task}</span>
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        </div>
+                                      )}
+                                      {sub.warning && (
+                                        <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r p-4">
+                                          <p className="text-sm text-amber-900 font-medium">
+                                            {sub.warning}
+                                          </p>
+                                        </div>
+                                      )}
+                                    </div>
+                                  )}
                                 </div>
-                              )}
-                              {sub.warning && (
-                                <div className="mt-3 bg-amber-50 border-l-4 border-amber-500 rounded-r p-3">
-                                  <p className="text-xs text-amber-800 font-semibold">
-                                    {sub.warning}
-                                  </p>
-                                </div>
-                              )}
-                            </div>
-                          ))}
+                              </div>
+                            )
+                          })}
                         </div>
                       </div>
                     )}
