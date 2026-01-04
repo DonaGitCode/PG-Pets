@@ -4,22 +4,27 @@ import { ArrowLeft } from 'lucide-react'
 
 export default function CertificacionPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-white">
       {/* Breadcrumb */}
-      <div className="bg-white border-b">
-        <div className="container-custom section-padding py-4">
+      <div className="bg-white border-b border-gray-100">
+        <div className="container-custom section-padding py-6">
           <Link 
             href="/" 
-            className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
+            className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Volver al inicio
+            <div className="w-7 h-7 rounded-full bg-gray-100 group-hover:bg-gray-200 transition-colors flex items-center justify-center">
+              <ArrowLeft className="w-4 h-4" />
+            </div>
+            <span>Inicio</span>
           </Link>
         </div>
       </div>
 
       {/* Content */}
       <ComplianceSection />
+      
+      {/* Spacer before footer */}
+      <div className="h-16 md:h-24"></div>
     </main>
   )
 }

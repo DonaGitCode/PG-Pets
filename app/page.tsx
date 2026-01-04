@@ -13,9 +13,11 @@ export default function Home() {
       <div className="py-8 md:py-16">
         <Programs />
       </div>
-      <div className="py-8 md:py-16 mb-12 md:mb-16">
+      <div className="py-8 md:py-16">
         <Contact />
       </div>
+      {/* Spacer before footer */}
+      <div className="h-16 md:h-24"></div>
     </main>
   )
 }
