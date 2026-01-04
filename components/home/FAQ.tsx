@@ -69,45 +69,47 @@ export default function FAQ() {
     <section id="faq" className="section-padding bg-white">
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-2 bg-primary-100 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <HelpCircle className="w-4 h-4" />
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 px-4">
+          <div className="inline-flex items-center space-x-2 bg-primary-100 text-primary-700 px-3 py-2 rounded-full text-xs md:text-sm font-medium mb-4 md:mb-6">
+            <HelpCircle className="w-3 h-3 md:w-4 md:h-4" />
             <span>Preguntas Frecuentes</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
             ¿Tienes preguntas? Aquí están las respuestas
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-base md:text-lg text-gray-600">
             Encuentra respuestas a las preguntas más comunes sobre nuestros programas 
             de entrenamiento y servicios.
           </p>
         </div>
 
         {/* FAQ Accordion */}
-        <div className="max-w-4xl mx-auto space-y-4">
+        <div className="max-w-4xl mx-auto space-y-3 md:space-y-4 px-4">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="card overflow-hidden transition-all duration-200"
+              className="card overflow-hidden transition-all duration-200 shadow-sm"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full text-left p-6 flex justify-between items-start gap-4 hover:bg-gray-50 transition-colors"
+                className="w-full text-left p-4 md:p-6 flex justify-between items-start gap-3 md:gap-4 hover:bg-gray-50 transition-colors"
               >
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-gray-900 pr-8">
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-sm md:text-base lg:text-lg font-semibold text-gray-900 pr-2 leading-snug">
                     {faq.question}
                   </h3>
                 </div>
                 <ChevronDown
-                  className={`w-6 h-6 text-primary-600 flex-shrink-0 transition-transform duration-200 ${
+                  className={`w-5 h-5 md:w-6 md:h-6 text-primary-600 flex-shrink-0 transition-transform duration-200 ${
                     openIndex === index ? 'rotate-180' : ''
                   }`}
                 />
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-6">
-                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                <div className="px-4 md:px-6 pb-4 md:pb-6 animate-in slide-in-from-top-2 duration-200">
+                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                    {faq.answer}
+                  </p>
                 </div>
               )}
             </div>
@@ -115,13 +117,13 @@ export default function FAQ() {
         </div>
 
         {/* CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-lg text-gray-600 mb-6">
+        <div className="mt-12 md:mt-16 text-center px-4">
+          <p className="text-base md:text-lg text-gray-600 mb-4 md:mb-6">
             ¿No encuentras la respuesta que buscas?
           </p>
           <a
             href="/#contacto"
-            className="btn-primary inline-block"
+            className="btn-primary inline-block text-sm md:text-base"
           >
             Contáctanos directamente
           </a>

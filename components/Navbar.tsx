@@ -32,20 +32,20 @@ export default function Navbar() {
             <Link href="/#programas" className="text-gray-700 hover:text-primary-600 transition-colors font-medium">
               Programas
             </Link>
-            <Link href="/#proceso" className="text-gray-700 hover:text-primary-600 transition-colors font-medium">
+            <Link href="/proceso" className="text-gray-700 hover:text-primary-600 transition-colors font-medium">
               Proceso
+            </Link>
+            <Link href="/certificacion" className="text-gray-700 hover:text-primary-600 transition-colors font-medium">
+              Certificación
+            </Link>
+            <Link href="/faq" className="text-gray-700 hover:text-primary-600 transition-colors font-medium">
+              FAQ
             </Link>
             <Link href="/verify" className="text-gray-700 hover:text-primary-600 transition-colors font-medium">
               Verificar
             </Link>
-            <Link href="/#faq" className="text-gray-700 hover:text-primary-600 transition-colors font-medium">
-              FAQ
-            </Link>
             <Link href="/#contacto" className="text-gray-700 hover:text-primary-600 transition-colors font-medium">
               Contacto
-            </Link>
-            <Link href="/admin" className="text-sm text-gray-500 hover:text-primary-600 transition-colors">
-              Admin
             </Link>
           </div>
 
@@ -76,11 +76,25 @@ export default function Navbar() {
               Programas
             </Link>
             <Link
-              href="/#proceso"
+              href="/proceso"
               className="block text-gray-700 hover:text-primary-600 transition-colors font-medium"
               onClick={() => setIsOpen(false)}
             >
               Proceso
+            </Link>
+            <Link
+              href="/certificacion"
+              className="block text-gray-700 hover:text-primary-600 transition-colors font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Certificación
+            </Link>
+            <Link
+              href="/faq"
+              className="block text-gray-700 hover:text-primary-600 transition-colors font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              FAQ
             </Link>
             <Link
               href="/verify"
@@ -90,25 +104,11 @@ export default function Navbar() {
               Verificar
             </Link>
             <Link
-              href="/#faq"
-              className="block text-gray-700 hover:text-primary-600 transition-colors font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              FAQ
-            </Link>
-            <Link
               href="/#contacto"
               className="block text-gray-700 hover:text-primary-600 transition-colors font-medium"
               onClick={() => setIsOpen(false)}
             >
               Contacto
-            </Link>
-            <Link
-              href="/admin"
-              className="block text-sm text-gray-500 hover:text-primary-600 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Admin
             </Link>
             <Link
               href="/#contacto"
