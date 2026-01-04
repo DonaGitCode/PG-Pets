@@ -6,6 +6,7 @@ import { Search, QrCode, CheckCircle, XCircle, Calendar, FileText, Shield, Alert
 import { formatDate, getStatusColor } from '@/lib/utils'
 import QRScanner from '@/components/verify/QRScanner'
 import Image from 'next/image'
+import { createClient } from '@/lib/supabase'
 
 interface Certification {
   cert_id: string
@@ -68,11 +69,16 @@ export default function VerificationCard() {
     setResult(null)
 
     try {
-      const response = await fetch(`/api/certifications?id=${encodeURIComponent(searchId)}`)
-      const data = await response.json()
+      const supabase = createClient()
+      
+      const { data, error: supabaseError } = await supabase
+        .from('certifications')
+        .select('*')
+        .eq('cert_id', searchId)
+        .single()
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Error al buscar la certificación')
+      if (supabaseError || !data) {
+        throw new Error('No se encontró ninguna certificación con ese ID')
       }
 
       setResult(data)
