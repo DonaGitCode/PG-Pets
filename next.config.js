@@ -2,6 +2,7 @@
 const nextConfig = {
   output: 'export',
   basePath: '/PG-Pets',
+  assetPrefix: '/PG-Pets',
   skipTrailingSlashRedirect: true,
   images: {
     remotePatterns: [
