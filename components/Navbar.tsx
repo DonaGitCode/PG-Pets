@@ -41,9 +41,6 @@ export default function Navbar() {
             <Link href="/faq" className="text-gray-700 hover:text-primary-600 transition-colors font-medium">
               FAQ
             </Link>
-            <Link href="/verify" className="text-gray-700 hover:text-primary-600 transition-colors font-medium">
-              Verificar
-            </Link>
             <Link href="/#contacto" className="text-gray-700 hover:text-primary-600 transition-colors font-medium">
               Contacto
             </Link>
@@ -96,13 +93,6 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
             >
               FAQ
-            </Link>
-            <Link
-              href="/verify"
-              className="block text-gray-700 hover:text-primary-600 transition-colors font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              Verificar
             </Link>
             <Link
               href="/#contacto"

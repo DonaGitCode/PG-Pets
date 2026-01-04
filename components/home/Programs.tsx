@@ -22,7 +22,7 @@ export default function Programs() {
       id: 'perros-servicio',
       title: 'Perros de Servicio',
       icon: Briefcase,
-      image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=800',
+      image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=80&w=1200',
       description: 'Perros entrenados profesionalmente para realizar tareas específicas en beneficio de personas con discapacidades físicas, sensoriales o médicas.',
       explanation: 'Los perros de servicio son animales de trabajo altamente capacitados que ejecutan funciones concretas y medibles para asistir a personas con necesidades específicas.',
       subcategories: [
