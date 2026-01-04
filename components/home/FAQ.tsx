@@ -8,52 +8,52 @@ export default function FAQ() {
 
   const faqs = [
     {
-      question: '¿Qué diferencia hay entre un perro de apoyo emocional y un perro de servicio?',
-      answer: 'Un perro de apoyo emocional brinda estabilidad y confort al tutor mediante su presencia y comportamiento tranquilo. Un perro de servicio está entrenado para realizar tareas específicas relacionadas con la discapacidad del tutor (abrir puertas, alertar emergencias, etc.). Ambos requieren entrenamiento profesional, pero los perros de servicio tienen un nivel más avanzado de obediencia y tareas especializadas.'
+      question: '¿Cuál es la diferencia entre Perros de Servicio y Perros de Soporte Emocional?',
+      answer: 'Esta es la distinción más importante: Los PERROS DE SERVICIO están entrenados para realizar tareas específicas y medibles que asisten directamente a personas con discapacidades (físicas, sensoriales o médicas). Ejemplos: guiar a personas con discapacidad visual, alertar crisis epilépticas, asistir movilidad. Los PERROS DE SOPORTE EMOCIONAL, por otro lado, NO realizan tareas entrenadas específicas; su función es proporcionar consuelo, compañía y estabilidad emocional mediante su presencia. Legalmente, según la Ley 1618 de 2013 de Colombia y el ADA en Estados Unidos, solo los perros de servicio tienen derechos de acceso público garantizados.'
     },
     {
-      question: '¿Cuánto tiempo dura el proceso de entrenamiento?',
-      answer: 'Depende del programa: Apoyo Emocional (8-12 semanas), Servicio (12-20 semanas), Lazarillo (16-24 semanas), Alerta Médica (10-18 semanas). La evaluación inicial es de 1-2 sesiones. Cada programa se adapta al progreso individual del binomio perro-tutor.'
+      question: '¿Qué leyes regulan los perros de servicio en Colombia?',
+      answer: 'En Colombia, la Ley 1618 de 2013 establece las disposiciones para garantizar el pleno ejercicio de los derechos de las personas con discapacidad, incluyendo el uso de perros de servicio. El Decreto 1538 de 2005 regula específicamente el acceso de perros guía. A nivel internacional, Colombia ratificó la Convención sobre los Derechos de las Personas con Discapacidad de la ONU (2006). Es importante aclarar que estas normativas aplican principalmente a PERROS DE SERVICIO que realizan tareas específicas documentadas, no a perros de soporte emocional.'
     },
     {
-      question: '¿Mi perro puede calificar para el entrenamiento?',
-      answer: 'Realizamos una evaluación conductual inicial donde determinamos el temperamento, aptitudes y posibilidades de cada perro. Generalmente, perros con buena salud, temperamento equilibrado y entre 1-6 años tienen mayor probabilidad de éxito. La evaluación nos permite recomendar el programa más adecuado o indicar si se requiere trabajo previo.'
+      question: '¿Mi perro de servicio tiene acceso garantizado a espacios públicos?',
+      answer: 'En Colombia, la Ley 1618 de 2013 garantiza el acceso de personas con discapacidad acompañadas de sus perros de servicio a espacios públicos, transporte y establecimientos. SIN EMBARGO: 1) El perro debe estar específicamente entrenado para tareas relacionadas con la discapacidad del tutor, 2) Debe comportarse apropiadamente en público, 3) Cada establecimiento puede solicitar documentación que demuestre el entrenamiento. Los perros de soporte emocional NO tienen los mismos derechos de acceso automático y dependen de las políticas de cada establecimiento.'
     },
     {
-      question: '¿El entrenamiento incluye certificación legal?',
-      answer: 'Proporcionamos un informe profesional detallado del entrenamiento completado y un registro con ID único verificable por QR. Sin embargo, NO emitimos certificación legal de "perro de servicio" según normativas jurídicas, ya que estas categorías dependen de leyes específicas de cada jurisdicción. Nuestro enfoque es entrenar y documentar profesionalmente.'
+      question: '¿Cuánto dura el entrenamiento para cada clasificación?',
+      answer: 'PERROS DE SERVICIO: Entre 12-24 semanas dependiendo de la especialización (Perros Guía: 16-24 semanas, Alerta Médica: 10-18 semanas, Asistencia a Movilidad: 12-20 semanas). PERROS DE SOPORTE EMOCIONAL: 8-12 semanas enfocadas en socialización y comportamiento equilibrado. La diferencia en duración refleja la complejidad: los perros de servicio deben dominar tareas funcionales específicas, mientras que los de soporte emocional se enfocan en temperamento y presencia calmante.'
     },
     {
-      question: '¿Puedo verificar el entrenamiento de un perro registrado?',
-      answer: 'Sí, completamente. Cada perro entrenado recibe un ID único (formato SG-NAR-YYYY-XXXXXX) y un código QR. Cualquier persona puede verificar el estado del entrenamiento en nuestra página de verificación ingresando el ID o escaneando el QR. La información pública incluye programa, fechas y estado, sin exponer datos personales del tutor.'
+      question: '¿Qué documentación recibo al completar el entrenamiento?',
+      answer: 'Para ambas categorías proporcionamos: 1) Informe profesional detallado del programa completado, 2) Registro con ID único verificable (formato SG-NAR-YYYY-XXXXXX), 3) Código QR para verificación pública. Para PERROS DE SERVICIO incluimos adicionalmente: documentación específica de tareas entrenadas, protocolos de actuación y certificación de habilidades medibles. IMPORTANTE: No emitimos "certificados legales de perro de servicio" ya que la categorización legal depende de normativas específicas de cada jurisdicción y debe ser validada por las autoridades competentes.'
     },
     {
-      question: '¿Qué métodos de entrenamiento utilizan?',
-      answer: 'Utilizamos exclusivamente métodos de refuerzo positivo basados en las mejores prácticas internacionales de bienestar animal. Nuestro enfoque es ético, científico y centrado en el bienestar del perro. Nunca empleamos métodos aversivos, castigo físico ni técnicas que comprometan el bienestar emocional del animal.'
+      question: '¿Puedo verificar el entrenamiento de cualquier perro registrado?',
+      answer: 'Sí, completamente público y transparente. Cada perro entrenado recibe un ID único y código QR. En nuestra página de verificación (steadyguardians.com/verify) cualquier persona puede consultar: 1) Clasificación (Servicio o Soporte Emocional), 2) Programa específico completado, 3) Fechas de emisión y vigencia, 4) Estado actual (Vigente/Vencido). La información NO incluye datos personales del tutor, solo valida el entrenamiento completado profesionalmente.'
     },
     {
-      question: '¿Qué sucede si mi perro no completa el programa?',
-      answer: 'No todos los perros son aptos para todos los programas, y está bien. Si durante el proceso determinamos que el programa actual no es el adecuado, te recomendaremos alternativas: ajustar a un programa diferente, realizar trabajo preparatorio adicional, o en algunos casos, considerar otro perro con mejor aptitud. Siempre priorizamos el bienestar del animal.'
+      question: '¿Mi perro puede calificar para ser Perro de Servicio?',
+      answer: 'Realizamos una evaluación conductual profesional inicial (gratuita) donde determinamos: 1) Temperamento y estabilidad emocional, 2) Aptitud para tareas específicas, 3) Salud física y edad adecuada (idealmente 1-6 años). IMPORTANTE: No todos los perros califican para Perro de Servicio. Si tu perro no es apto para tareas funcionales específicas, podemos recomendar el programa de Soporte Emocional, que es igualmente valioso pero sirve un propósito diferente. La evaluación es honesta y priorizamos siempre el bienestar del animal.'
     },
     {
-      question: '¿Ofrecen seguimiento después de completar el programa?',
-      answer: 'Sí, incluimos recomendaciones de mantenimiento y ofrecemos sesiones de refuerzo opcionales. El entrenamiento es un proceso continuo y estamos disponibles para consultas post-programa. También recomendamos prácticas regulares para mantener las habilidades desarrolladas.'
+      question: '¿Qué métodos de entrenamiento utilizan y por qué?',
+      answer: 'Utilizamos EXCLUSIVAMENTE métodos de refuerzo positivo basados en ciencia del comportamiento animal y bienestar. Seguimos las directrices de: IAABC (International Association of Animal Behavior Consultants), Asociación de Veterinarios de Comportamiento Animal, y principios de la Declaración de Cambridge sobre Conciencia Animal (2012). NUNCA usamos: castigos físicos, collares de púas, descargas eléctricas o métodos aversivos. El entrenamiento ético no solo es moralmente correcto, sino que produce resultados más confiables y duraderos, especialmente crítico en perros de servicio.'
     },
     {
-      question: '¿Trabajan con perros ya entrenados o solo entrenan desde cero?',
-      answer: 'Trabajamos en ambos casos. Podemos evaluar perros con entrenamiento previo y ofrecer programas de especialización o certificación. También entrenamos desde cero. La evaluación inicial determinará el punto de partida más apropiado para cada caso.'
+      question: '¿Los perros de soporte emocional pueden viajar en avión conmigo?',
+      answer: 'SITUACIÓN ACTUAL: La mayoría de aerolíneas internacionales (incluyendo las que operan en Colombia) modificaron sus políticas entre 2020-2021 siguiendo directrices del Departamento de Transporte de EE.UU. PERROS DE SERVICIO: Generalmente permitidos en cabina sin costo adicional con documentación adecuada. PERROS DE SOPORTE EMOCIONAL: Ya NO tienen acceso automático garantizado en la mayoría de aerolíneas; deben viajar como mascotas regulares (cargo, costo adicional, restricciones de tamaño). Cada aerolínea tiene políticas específicas. Recomendamos verificar directamente con la aerolínea antes de reservar.'
     },
     {
-      question: '¿Tienen cobertura en toda Colombia?',
-      answer: 'Sí, tenemos cobertura nacional en toda Colombia. Nuestra sede principal está en Bogotá, pero atendemos clientes en todo el país. Ofrecemos opciones de entrenamiento presencial, intensivo o con desplazamiento según la ubicación y necesidades del caso. Contáctanos para discutir la mejor opción para tu ciudad.'
+      question: '¿Qué sucede si mi perro no completa el programa de Servicio?',
+      answer: 'No todos los perros califican para Perro de Servicio, y esto es completamente normal. Si durante el entrenamiento determinamos que el perro no alcanza los estándares requeridos para tareas funcionales específicas, tenemos varias opciones: 1) Ajustar al programa de Soporte Emocional (igualmente valioso), 2) Trabajo preparatorio adicional si el potencial existe, 3) Evaluación honesta si otro perro sería más apropiado. Priorizamos siempre el bienestar del animal sobre expectativas comerciales. El entrenamiento de Servicio es exigente y no todos los perros están diseñados para ese nivel de trabajo.'
     },
     {
-      question: '¿Cuál es el costo de los programas?',
-      answer: 'Los costos varían según el programa, duración y necesidades específicas. Ofrecemos una evaluación inicial gratuita donde discutimos detalles del programa y proporcionamos un presupuesto personalizado. Contáctanos para agendar tu evaluación.'
+      question: '¿Ofrecen seguimiento post-entrenamiento?',
+      answer: 'Sí, para ambas categorías. PERROS DE SERVICIO: Incluye sesiones de refuerzo programadas (trimestral recomendado), soporte por consulta ante cambios en tareas o entorno, actualizaciones de registro si se agregan nuevas habilidades. PERROS DE SOPORTE EMOCIONAL: Recomendaciones de mantenimiento del vínculo, soporte ante cambios de comportamiento. El entrenamiento no termina con el programa; es un proceso continuo que requiere práctica y mantenimiento regular para preservar las habilidades desarrolladas.'
     },
     {
-      question: '¿Qué debo llevar a la evaluación inicial?',
-      answer: 'Para la evaluación inicial: carnet de vacunación actualizado del perro, información sobre su historial médico y conductual, y cualquier documentación de entrenamiento previo si aplica. También es útil traer información sobre tus necesidades específicas y expectativas del programa.'
+      question: '¿Cuál es el costo y ofrecen planes de pago?',
+      answer: 'Los costos varían según la clasificación y duración: PERROS DE SERVICIO (más extenso por complejidad de tareas): $X-XX millones COP. PERROS DE SOPORTE EMOCIONAL: $X-XX millones COP. La evaluación inicial es GRATUITA. Ofrecemos: 1) Planes de pago flexibles, 2) Presupuesto personalizado según necesidades, 3) Transparencia total en costos. Contáctanos para discutir opciones específicas para tu caso. El precio refleja el tiempo, experiencia profesional y documentación proporcionada.'
     }
   ]
 

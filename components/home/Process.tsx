@@ -5,37 +5,40 @@ export default function Process() {
     {
       number: '01',
       icon: ClipboardList,
-      title: 'Entrevista y Evaluación Inicial',
-      description: 'Realizamos una evaluación completa del perro y una entrevista detallada con el tutor para entender las necesidades específicas y determinar el programa más adecuado.',
+      title: 'Evaluación Inicial y Clasificación',
+      description: 'Evaluación conductual profesional GRATUITA para determinar si tu perro es candidato para Perro de Servicio (tareas específicas) o Perro de Soporte Emocional (acompañamiento), según aptitudes y necesidades del tutor.',
       details: [
-        'Evaluación de temperamento',
-        'Análisis de necesidades del tutor',
-        'Recomendación de programa',
-        'Plan personalizado'
+        'Evaluación de temperamento y aptitudes funcionales',
+        'Análisis de necesidades específicas del tutor (médicas, físicas, emocionales)',
+        'Clasificación recomendada: Servicio vs. Soporte Emocional',
+        'Plan personalizado con duración y objetivos claros',
+        'Revisión de leyes aplicables (Ley 1618/2013 Colombia si aplica)'
       ]
     },
     {
       number: '02',
       icon: Dumbbell,
-      title: 'Entrenamiento y Seguimiento',
-      description: 'Implementamos el programa de entrenamiento especializado con sesiones regulares, seguimiento continuo y ajustes según el progreso del binomio perro-tutor.',
+      title: 'Entrenamiento Especializado por Clasificación',
+      description: 'Implementación del programa correspondiente con metodología de refuerzo positivo. PERROS DE SERVICIO: entrenamiento en tareas funcionales medibles. PERROS DE SOPORTE EMOCIONAL: desarrollo de temperamento equilibrado y presencia calmante.',
       details: [
-        'Sesiones de entrenamiento especializadas',
-        'Evaluaciones de progreso',
-        'Ajustes personalizados',
-        'Acompañamiento constante'
+        'Servicio: Tareas específicas documentadas (ej. alertar crisis, asistir movilidad)',
+        'Soporte: Socialización avanzada y comportamiento público apropiado',
+        'Evaluaciones de progreso periódicas con métricas objetivas',
+        'Ajustes según progreso individual del binomio',
+        'Métodos éticos certificados (IAABC, AVSAB)'
       ]
     },
     {
       number: '03',
       icon: FileCheck,
-      title: 'Informe Profesional + Verificación ID/QR',
-      description: 'Al completar el programa, emitimos un informe profesional detallado y generamos un registro con ID único verificable mediante QR para validación pública.',
+      title: 'Certificación, Registro y Verificación Pública',
+      description: 'Emisión de informe profesional detallado y registro con ID único verificable públicamente. Incluye orientación sobre derechos de acceso según leyes colombianas (Ley 1618/2013 para Servicio) y políticas de establecimientos.',
       details: [
-        'Informe técnico completo',
-        'Certificación de programa',
-        'ID único SG-NAR-YYYY-XXXXXX',
-        'QR de verificación pública'
+        'Informe técnico especificando clasificación y tareas/capacidades',
+        'ID único SG-NAR-YYYY-XXXXXX con código QR',
+        'Verificación pública en steadyguardians.com/verify',
+        'Guía de derechos legales según clasificación (Servicio vs. Soporte)',
+        'Protocolo de mantenimiento y refuerzo continuo'
       ]
     }
   ]
@@ -44,14 +47,19 @@ export default function Process() {
     <section id="proceso" className="section-padding bg-white">
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Nuestro Proceso de Trabajo
+            Nuestro Proceso Profesional de Entrenamiento
           </h2>
-          <p className="text-lg text-gray-600">
-            Un proceso estructurado y profesional que garantiza resultados reales 
-            y documentación verificable del entrenamiento completado.
+          <p className="text-lg text-gray-600 mb-6">
+            Un proceso estructurado que distingue claramente entre <strong>Perros de Servicio</strong> (tareas funcionales específicas) 
+            y <strong>Perros de Soporte Emocional</strong> (acompañamiento y estabilidad), garantizando 
+            documentación verificable y cumplimiento de normativas colombianas aplicables.
           </p>
+          <div className="inline-flex items-center space-x-2 bg-primary-100 text-primary-700 px-4 py-2 rounded-full text-sm font-medium">
+            <FileCheck className="w-4 h-4" />
+            <span>Basado en Ley 1618/2013 (Colombia) y mejores prácticas internacionales</span>
+          </div>
         </div>
 
         {/* Steps */}
