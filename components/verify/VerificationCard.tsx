@@ -236,14 +236,11 @@ export default function VerificationCard() {
                   {/* Left: Logo and Title */}
                   <div className="flex flex-col sm:flex-row items-center sm:space-x-4 text-center sm:text-left">
                     <div className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center shadow-lg mb-3 sm:mb-0 p-3">
-                      <div className="relative w-full h-full">
-                        <Image
-                          src="/images/Logo.png"
-                          alt="Steady Guardians Logo"
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
+                      <img
+                        src={`${process.env.NODE_ENV === 'production' ? '/PG-Pets' : ''}/images/Logo.png`}
+                        alt="Steady Guardians Logo"
+                        className="w-full h-full object-contain"
+                      />
                     </div>
                     <div>
                       <h2 className="text-2xl md:text-3xl font-bold">Certificación Auténtica</h2>
@@ -460,14 +457,11 @@ export default function VerificationCard() {
                   <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="flex items-center space-x-3 md:space-x-4">
                       <div className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center p-3">
-                        <div className="relative w-full h-full">
-                          <Image
-                            src="/images/Logo.png"
-                            alt="Steady Guardians Logo"
-                            fill
-                            className="object-contain"
-                          />
-                        </div>
+                        <img
+                          src={`${process.env.NODE_ENV === 'production' ? '/PG-Pets' : ''}/images/Logo.png`}
+                          alt="Steady Guardians Logo"
+                          className="w-full h-full object-contain"
+                        />
                       </div>
                       <div>
                         <h5 className="font-bold text-gray-900 text-base md:text-lg">Certificado Oficial</h5>
