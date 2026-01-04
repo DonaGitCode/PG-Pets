@@ -14,23 +14,66 @@ export default function Programs() {
       subcategories: [
         {
           name: 'Perros Guía (Lazarillos)',
-          description: 'Entrenados para guiar a personas con discapacidad visual o ceguera en navegación segura'
+          description: 'Entrenados para guiar a personas con discapacidad visual o ceguera en navegación segura',
+          tasks: [
+            'Detención ante obstáculos (escaleras, bordillos, objetos suspendidos)',
+            'Navegación precisa en rutas urbanas y espacios interiores',
+            'Identificación y evitación de peligros (tráfico, huecos, construcciones)',
+            'Desobediencia inteligente (ignorar comando si representa peligro)',
+            'Guiado en línea recta y giros precisos'
+          ]
         },
         {
           name: 'Perros de Asistencia a la Movilidad',
-          description: 'Ayudan a personas con discapacidades físicas en tareas como abrir puertas, recoger objetos o mantener el equilibrio'
+          description: 'Ayudan a personas con discapacidades físicas en tareas funcionales específicas',
+          tasks: [
+            'Recuperar objetos caídos o fuera de alcance',
+            'Abrir/cerrar puertas, cajones y encender luces',
+            'Asistir en transferencias (silla de ruedas, cama, baño)',
+            'Proveer soporte físico para equilibrio y estabilidad',
+            'Cargar objetos en mochila o arnés especial',
+            'Operar interruptores y botones de accesibilidad'
+          ]
         },
         {
           name: 'Perros de Alerta Médica',
-          description: 'Detectan y alertan sobre condiciones médicas como diabetes, epilepsia, alergias severas o enfermedades cardíacas'
+          description: 'Detectan cambios fisiológicos antes de crisis médicas y alertan al tutor',
+          tasks: [
+            'Alerta de hipoglucemia/hiperglucemia (diabetes) 15-30 min antes',
+            'Detección de crisis epilépticas inminentes',
+            'Alerta de arritmias cardíacas o cambios en presión arterial',
+            'Detección de alergenos específicos en ambiente',
+            'Señal de alerta mediante toque, ladrido o comportamiento específico'
+          ]
         },
         {
           name: 'Perros de Respuesta Médica',
-          description: 'Actúan durante crisis médicas: buscar ayuda, activar alarmas, traer medicamentos o asistir durante convulsiones'
+          description: 'Actúan durante o después de crisis médicas con protocolos específicos',
+          tasks: [
+            'Activar sistemas de alerta médica (botones, alarmas)',
+            'Traer medicamentos, teléfono o kit de emergencia',
+            'Posicionarse para proteger durante convulsiones',
+            'Buscar ayuda (persona específica o activar alarma)',
+            'Permanecer con el tutor hasta que llegue asistencia',
+            'Abrir puertas para permitir entrada de paramédicos'
+          ]
         },
         {
-          name: 'Perros de Asistencia Psiquiátrica',
-          description: 'Realizan tareas entrenadas específicas para personas con condiciones de salud mental como TEPT, trastorno bipolar o esquizofrenia'
+          name: 'Perros de Asistencia Psiquiátrica (PSD)',
+          description: '⚠️ NO confundir con Soporte Emocional - Realizan TAREAS ENTRENADAS específicas para condiciones psiquiátricas',
+          tasks: [
+            'Interrumpir ataques de pánico mediante toque o presión',
+            'Aplicar terapia de presión profunda (Deep Pressure Therapy)',
+            'Detectar y responder ante episodios de disociación',
+            'Bloquear estímulos sensoriales (crear espacio físico)',
+            'Guiar hacia salida durante sobrecarga sensorial en multitudes',
+            'Recordar toma de medicación mediante alerta programada',
+            'Anclar a la realidad durante flashbacks (TEPT)',
+            'Encender luces al entrar en espacios (ansiedad)',
+            'Despertar de pesadillas recurrentes',
+            'Conducir a lugar seguro durante crisis'
+          ],
+          warning: 'DIFERENCIA CLAVE: Los PSD ejecutan tareas medibles y entrenadas. Los perros de Soporte Emocional solo brindan consuelo por su presencia, sin tareas funcionales.'
         }
       ],
       features: [
@@ -150,15 +193,37 @@ export default function Programs() {
                         <h4 className="text-xl font-bold text-gray-900 mb-4">
                           Tipos de Perros de Servicio:
                         </h4>
-                        <div className="space-y-3">
+                        <div className="space-y-4">
                           {category.subcategories.map((sub, idx) => (
-                            <div key={idx} className="bg-white rounded-lg p-4 border border-gray-200">
-                              <h5 className="font-semibold text-primary-700 mb-1">
+                            <div key={idx} className="bg-white rounded-lg p-5 border-2 border-gray-200 hover:border-primary-300 transition-colors">
+                              <h5 className="font-bold text-primary-700 mb-2 text-base">
                                 {sub.name}
                               </h5>
-                              <p className="text-sm text-gray-600">
+                              <p className="text-sm text-gray-600 mb-3">
                                 {sub.description}
                               </p>
+                              {sub.tasks && (
+                                <div className="bg-gray-50 rounded-lg p-3">
+                                  <p className="text-xs font-semibold text-gray-700 mb-2 uppercase tracking-wide">
+                                    Tareas específicas entrenadas:
+                                  </p>
+                                  <ul className="space-y-1">
+                                    {sub.tasks.map((task, taskIdx) => (
+                                      <li key={taskIdx} className="text-xs text-gray-600 flex items-start">
+                                        <span className="text-primary-600 mr-2 mt-1">▸</span>
+                                        <span>{task}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
+                              {sub.warning && (
+                                <div className="mt-3 bg-amber-50 border-l-4 border-amber-500 rounded-r p-3">
+                                  <p className="text-xs text-amber-800 font-semibold">
+                                    {sub.warning}
+                                  </p>
+                                </div>
+                              )}
                             </div>
                           ))}
                         </div>

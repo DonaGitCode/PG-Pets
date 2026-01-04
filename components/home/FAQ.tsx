@@ -9,7 +9,7 @@ export default function FAQ() {
   const faqs = [
     {
       question: '¿Cuál es la diferencia entre Perros de Servicio y Perros de Soporte Emocional?',
-      answer: 'Esta es la distinción más importante: Los PERROS DE SERVICIO están entrenados para realizar tareas específicas y medibles que asisten directamente a personas con discapacidades (físicas, sensoriales o médicas). Ejemplos: guiar a personas con discapacidad visual, alertar crisis epilépticas, asistir movilidad. Los PERROS DE SOPORTE EMOCIONAL, por otro lado, NO realizan tareas entrenadas específicas; su función es proporcionar consuelo, compañía y estabilidad emocional mediante su presencia. Legalmente, según la Ley 1618 de 2013 de Colombia y el ADA en Estados Unidos, solo los perros de servicio tienen derechos de acceso público garantizados.'
+      answer: 'Esta es la distinción MÁS IMPORTANTE: Los PERROS DE SERVICIO están entrenados para realizar TAREAS ESPECÍFICAS Y MEDIBLES que asisten directamente a personas con discapacidades. Ejemplos de tareas: 1) Perros Guía: detener ante escaleras, navegar obstáculos. 2) Alerta Médica: detectar hipoglucemia 15-30 min antes y alertar. 3) Asistencia Psiquiátrica (NO soporte emocional): interrumpir ataques de pánico con presión profunda, anclar durante flashbacks, guiar fuera de multitudes. Los PERROS DE SOPORTE EMOCIONAL NO realizan tareas entrenadas específicas; su función es proporcionar consuelo y estabilidad mediante su presencia, sin habilidades funcionales medibles. Legalmente, según Ley 1618/2013 de Colombia y ADA en EE.UU., solo los perros de servicio con tareas documentadas tienen derechos de acceso público garantizados.'
     },
     {
       question: '¿Qué leyes regulan los perros de servicio en Colombia?',
@@ -34,6 +34,14 @@ export default function FAQ() {
     {
       question: '¿Mi perro puede calificar para ser Perro de Servicio?',
       answer: 'Realizamos una evaluación conductual profesional inicial (gratuita) donde determinamos: 1) Temperamento y estabilidad emocional, 2) Aptitud para tareas específicas, 3) Salud física y edad adecuada (idealmente 1-6 años). IMPORTANTE: No todos los perros califican para Perro de Servicio. Si tu perro no es apto para tareas funcionales específicas, podemos recomendar el programa de Soporte Emocional, que es igualmente valioso pero sirve un propósito diferente. La evaluación es honesta y priorizamos siempre el bienestar del animal.'
+    },
+    {
+      question: '¿Qué tareas específicas puede realizar un Perro de Asistencia Psiquiátrica?',
+      answer: '⚠️ IMPORTANTE: NO confundir con Soporte Emocional. Los Perros de Asistencia Psiquiátrica (PSD) realizan TAREAS ENTRENADAS específicas para condiciones como TEPT, trastornos de ansiedad severa, trastorno bipolar, esquizofrenia. TAREAS MEDIBLES: 1) Interrumpir ataques de pánico mediante toque o presión en pecho/piernas, 2) Aplicar Deep Pressure Therapy (terapia de presión profunda) durante crisis, 3) Detectar episodios de disociación y anclar a la realidad, 4) Bloquear estímulos externos creando espacio físico, 5) Guiar hacia salida durante sobrecarga sensorial en multitudes, 6) Recordar medicación mediante alerta a hora programada, 7) Despertar de pesadillas recurrentes, 8) Encender luces al entrar en habitaciones (ansiedad/hipervigilancia), 9) Conducir a lugar seguro durante crisis. DIFERENCIA CLAVE: Estas son tareas funcionales entrenadas y medibles, NO simplemente "brindar consuelo".'
+    },
+    {
+      question: '¿Puede darme ejemplos concretos de tareas de cada tipo de Perro de Servicio?',
+      answer: 'Absolutamente. PERROS GUÍA: Detener ante bordillo antes de cruzar calle, navegar alrededor de obstáculo suspendido (rama), desobediencia inteligente (ignorar "avanza" si hay auto). ASISTENCIA MOVILIDAD: Recoger llaves caídas, abrir puerta de refrigerador, proveer soporte físico al levantarse. ALERTA MÉDICA DIABETES: Lamer mano o tocar pierna 20 min antes de hipoglucemia detectada. RESPUESTA EPILEPSIA: Posicionarse para amortiguar caída, activar botón de alerta médica, traer medicamento post-crisis. ASISTENCIA PSIQUIÁTRICA TEPT: Despertar de pesadilla mediante lamer cara, crear barrera física entre tutor y desconocido en fila, aplicar 30 lbs de presión en pecho durante ataque pánico. Todas estas son tareas ESPECÍFICAS, ENTRENABLES Y MEDIBLES, no "dar apoyo emocional".'
     },
     {
       question: '¿Qué métodos de entrenamiento utilizan y por qué?',
