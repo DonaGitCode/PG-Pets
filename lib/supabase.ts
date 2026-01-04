@@ -1,21 +1,27 @@
 import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 
+// Get environment variables with fallbacks
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
-// Only create client if we have the environment variables
-// This allows the build to succeed even without env vars
-const hasEnvVars = supabaseUrl && supabaseAnonKey
-
-export const supabase = hasEnvVars 
-  ? createSupabaseClient(supabaseUrl, supabaseAnonKey)
-  : null as any
-
 // Export a function to create new client instances
 export function createClient() {
-  if (!hasEnvVars) {
-    throw new Error('Missing Supabase environment variables')
+  // Check if we're in a browser environment
+  if (typeof window !== 'undefined') {
+    if (!supabaseUrl || !supabaseAnonKey) {
+      throw new Error('Missing Supabase environment variables')
+    }
   }
+  
+  // During build time, return a mock client
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return null as any
+  }
+  
   return createSupabaseClient(supabaseUrl, supabaseAnonKey)
 }
+
+// Export default client for backwards compatibility
+export const supabase = createClient()
+
 
