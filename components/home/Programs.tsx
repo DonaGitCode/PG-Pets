@@ -16,6 +16,7 @@ export default function Programs() {
   const toggleSubcategory = (key: string) => {
     setExpandedSubcategories(prev => ({ ...prev, [key]: !prev[key] }))
   }
+
   const mainCategories = [
     {
       id: 'perros-servicio',
