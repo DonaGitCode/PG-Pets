@@ -51,8 +51,9 @@ export default function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Link href="/#contacto" className="btn-primary">
-              Agendar Evaluación
+            <Link href="/verify" className="btn-primary bg-accent-600 hover:bg-accent-700 border-accent-600 flex items-center gap-2">
+              <Shield className="w-4 h-4" />
+              Verificar Certificado
             </Link>
           </div>
 
@@ -111,11 +112,11 @@ export default function Navbar() {
               Contacto
             </Link>
             <Link
-              href="/#contacto"
-              className="block btn-primary text-center"
+              href="/verify"
+              className="block btn-primary bg-accent-600 hover:bg-accent-700 border-accent-600 text-center"
               onClick={() => setIsOpen(false)}
             >
-              Agendar Evaluación
+              Verificar Certificado
             </Link>
           </div>
         )}
