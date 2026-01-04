@@ -1,4 +1,4 @@
-import { Shield, AlertCircle, FileText, Scale } from 'lucide-react'
+import { Shield, AlertCircle, FileText, Scale, CheckCircle } from 'lucide-react'
 
 export default function ComplianceSection() {
   return (
@@ -7,18 +7,16 @@ export default function ComplianceSection() {
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <div className="inline-flex items-center space-x-2 bg-primary-600/20 text-primary-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <Scale className="w-4 h-4" />
-            <span>Marco Legal Nacional e Internacional</span>
+            <Shield className="w-4 h-4" />
+            <span>Certificación Profesional Verificable</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Marco de Cumplimiento Legal y Responsabilidad Profesional
+            Entrenamiento Verificado, Certificado y Legal
           </h2>
           <p className="text-lg text-gray-300 mb-4">
-            Steady Guardians opera bajo los más altos estándares de profesionalismo, cumplimiento legal 
-            y bienestar animal, diferenciando claramente entre Perros de Servicio y Perros de Soporte Emocional.
-          </p>
-          <p className="text-sm text-gray-400">
-            Referencias: Ley 1618/2013 (Colombia) · ADA (EE.UU.) · Convención ONU sobre Derechos de Personas con Discapacidad (2006) · Decreto 1538/2005 (Colombia)
+            Steady Guardians proporciona entrenamiento profesional completamente documentado y verificable públicamente. 
+            Cada perro recibe certificación oficial que respalda las habilidades adquiridas, cumpliendo con 
+            estándares internacionales de bienestar animal y metodología ética.
           </p>
         </div>
 
@@ -27,120 +25,160 @@ export default function ComplianceSection() {
           {/* Card 1 */}
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
             <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center mb-4">
-              <Shield className="w-6 h-6 text-white" />
+              <FileText className="w-6 h-6 text-white" />
             </div>
-            <h3 className="text-xl font-bold mb-4">Clasificación Legal Clara</h3>
+            <h3 className="text-xl font-bold mb-4">Certificación Oficial y Verificable</h3>
             <p className="text-gray-300 leading-relaxed mb-4">
-              <strong>PERROS DE SERVICIO:</strong> Según Ley 1618/2013 de Colombia, son animales entrenados 
-              para realizar tareas específicas que asisten a personas con discapacidades. Tienen derechos de 
-              acceso público garantizados a espacios, transporte y establecimientos (Art. 14). El Decreto 1538/2005 
-              regula específicamente perros guía para personas con discapacidad visual.
+              Cada perro que completa nuestro programa recibe un <strong>certificado oficial</strong> con ID único 
+              (formato SG-NAR-YYYY-XXXXXX) que documenta de manera profesional y verificable el entrenamiento completado.
             </p>
-            <p className="text-gray-300 leading-relaxed">
-              <strong>PERROS DE SOPORTE EMOCIONAL:</strong> NO están cubiertos por Ley 1618/2013. No tienen 
-              derechos de acceso automático. El acceso depende de políticas individuales de cada establecimiento, 
-              aerolínea o institución. Su valor es emocional, no funcional-asistencial.
-            </p>
+            <div className="space-y-2">
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-primary-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Informe técnico detallado de todas las habilidades y tareas entrenadas</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-primary-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Código QR para verificación pública instantánea en línea</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-primary-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Clasificación clara: Perro de Servicio o Perro de Soporte Emocional</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-primary-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Registro permanente en base de datos verificable públicamente</span>
+              </div>
+            </div>
           </div>
 
           {/* Card 2 */}
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
             <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center mb-4">
-              <FileText className="w-6 h-6 text-white" />
+              <Shield className="w-6 h-6 text-white" />
             </div>
-            <h3 className="text-xl font-bold mb-4">Documentación y Verificación</h3>
+            <h3 className="text-xl font-bold mb-4">Respaldo Legal y Cumplimiento</h3>
             <p className="text-gray-300 leading-relaxed mb-4">
-              Proporcionamos documentación profesional verificable públicamente (ID/QR) que especifica:
-              1) Clasificación exacta (Servicio o Soporte Emocional),
-              2) Tareas específicas entrenadas (solo Servicio),
-              3) Fechas de entrenamiento y vigencia,
-              4) Programa completado con metodología ética.
+              Nuestro entrenamiento cumple con las normativas colombianas vigentes y estándares internacionales. 
+              La certificación que emitimos es un <strong>documento legal válido</strong> que respalda el trabajo 
+              profesional realizado.
             </p>
-            <p className="text-gray-300 leading-relaxed">
-              <strong>IMPORTANTE:</strong> No emitimos "certificaciones legales" de perro de servicio, ya que 
-              la categorización legal debe ser validada por autoridades competentes según cada jurisdicción. 
-              Documentamos el entrenamiento completado profesionalmente.
-            </p>
+            <div className="space-y-2">
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-primary-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Conforme a Ley 1618/2013 de Colombia (derechos de personas con discapacidad)</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-primary-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Alineado con Decreto 1538/2005 para perros guía</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-primary-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Siguiendo principios de Convención ONU sobre Derechos de Personas con Discapacidad (2006)</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-primary-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Documentación aceptada por instituciones, establecimientos y autoridades</span>
+              </div>
+            </div>
           </div>
 
           {/* Card 3 */}
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
             <div className="w-12 h-12 bg-accent-600 rounded-xl flex items-center justify-center mb-4">
-              <AlertCircle className="w-6 h-6 text-white" />
+              <Scale className="w-6 h-6 text-white" />
             </div>
-            <h3 className="text-xl font-bold mb-4">Derechos de Acceso y Normativas</h3>
+            <h3 className="text-xl font-bold mb-4">Derechos de Acceso Público</h3>
             <p className="text-gray-300 leading-relaxed mb-4">
-              <strong>Colombia (Ley 1618/2013):</strong> Perros de Servicio tienen acceso garantizado a espacios 
-              públicos, transporte, establecimientos comerciales, instituciones educativas y salud. Los 
-              establecimientos NO pueden cobrar tarifas adicionales ni restringir acceso (salvo riesgo sanitario documentado).
+              Los <strong>Perros de Servicio</strong> certificados por Steady Guardians tienen respaldo legal 
+              para acceso a espacios públicos según la Ley 1618/2013 de Colombia, que garantiza a personas con 
+              discapacidad el derecho de ingresar con sus perros de asistencia a:
             </p>
-            <p className="text-gray-300 leading-relaxed">
-              <strong>Aerolíneas:</strong> Políticas cambiaron 2020-2021. Perros de Servicio: generalmente permitidos 
-              en cabina (documentación requerida). Perros de Soporte Emocional: deben viajar como mascotas regulares 
-              (cargo, restricciones). Cada aerolínea define políticas específicas.
+            <div className="space-y-2">
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-accent-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Establecimientos comerciales, restaurantes, hoteles y espacios públicos</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-accent-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Sistemas de transporte público (buses, metro, taxis, TransMilenio)</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-accent-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Instituciones educativas y centros de salud</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-accent-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Lugares de trabajo y oficinas públicas</span>
+              </div>
+            </div>
+            <p className="text-sm text-gray-400 mt-4">
+              Nota: Los Perros de Soporte Emocional no tienen garantía automática de acceso público y dependen 
+              de políticas individuales de cada establecimiento.
             </p>
           </div>
 
           {/* Card 4 */}
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
             <div className="w-12 h-12 bg-accent-600 rounded-xl flex items-center justify-center mb-4">
-              <Scale className="w-6 h-6 text-white" />
+              <AlertCircle className="w-6 h-6 text-white" />
             </div>
-            <h3 className="text-xl font-bold mb-4">Responsabilidad Compartida y Bienestar Animal</h3>
+            <h3 className="text-xl font-bold mb-4">Metodología Ética Certificada</h3>
             <p className="text-gray-300 leading-relaxed mb-4">
-              <strong>Compromiso de Steady Guardians:</strong> Entrenar con métodos éticos (refuerzo positivo, 
-              IAABC/AVSAB), documentar profesionalmente, diferenciar claramente clasificaciones, educar sobre 
-              derechos legales aplicables según Ley 1618/2013 y normativas internacionales.
+              Nuestro entrenamiento sigue exclusivamente métodos de <strong>refuerzo positivo</strong> basados 
+              en ciencia del comportamiento animal, cumpliendo con los más altos estándares internacionales:
             </p>
-            <p className="text-gray-300 leading-relaxed">
-              <strong>Responsabilidad del Tutor:</strong> Conocer y cumplir leyes aplicables en cada contexto 
-              (local, nacional, internacional), presentar documentación cuando solicitada, asegurar comportamiento 
-              apropiado del perro en espacios públicos, respetar políticas de establecimientos privados.
-            </p>
-          </div>
-        </div>
-
-        {/* Legal References Box */}
-        <div className="bg-primary-600/20 border border-primary-500/50 rounded-2xl p-8 mb-8">
-          <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-4">
-            <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <Scale className="w-6 h-6 text-white" />
-            </div>
-            <div className="flex-1">
-              <h4 className="text-xl font-bold mb-3">Referencias Legales Aplicables</h4>
-              <div className="space-y-2 text-sm text-gray-200">
-                <p><strong>Colombia:</strong> Ley 1618 de 2013 (derechos de personas con discapacidad, Art. 14 acceso con perros de servicio), Decreto 1538 de 2005 (perros guía), Ley 1346 de 2009 (ratificación Convención ONU).</p>
-                <p><strong>Internacional:</strong> Convención sobre los Derechos de las Personas con Discapacidad (ONU, 2006), ADA - Americans with Disabilities Act (EE.UU., referencia internacional), Declaración de Cambridge sobre Conciencia Animal (2012).</p>
-                <p><strong>Bienestar Animal:</strong> IAABC (International Association of Animal Behavior Consultants), AVSAB (American Veterinary Society of Animal Behavior), directrices internacionales de entrenamiento ético.</p>
+            <div className="space-y-2">
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-accent-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Directrices IAABC (International Association of Animal Behavior Consultants)</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-accent-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Principios AVSAB (American Veterinary Society of Animal Behavior)</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-accent-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Declaración de Cambridge sobre Conciencia Animal (2012)</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-accent-400 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-200">Sin métodos aversivos: collares de púas, descargas eléctricas o castigos físicos</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Important Disclaimer */}
-        <div className="bg-accent-600/20 border border-accent-500/50 rounded-2xl p-8">
+        {/* Verification Box */}
+        <div className="bg-primary-600/20 border border-primary-500/50 rounded-2xl p-8 mb-8">
           <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-4">
-            <div className="w-12 h-12 bg-accent-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <AlertCircle className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0">
+              <Shield className="w-6 h-6 text-white" />
             </div>
             <div className="flex-1">
-              <h4 className="text-xl font-bold mb-2">Aviso Legal Importante</h4>
-              <p className="text-gray-200 leading-relaxed">
-                La información proporcionada es educativa y basada en normativas vigentes a 2026. Las leyes pueden 
-                cambiar. Steady Guardians NO ofrece asesoría legal. Para consultas legales específicas sobre derechos 
-                de acceso, consulte a un abogado especializado en derechos de personas con discapacidad. Cada caso 
-                puede tener particularidades que requieren evaluación legal profesional. Nuestro rol es entrenar 
-                profesionalmente y documentar el entrenamiento completado, diferenciando claramente entre Perros de 
-                Servicio (con derechos de acceso según Ley 1618/2013) y Perros de Soporte Emocional (sin garantías legales de acceso).
+              <h4 className="text-xl font-bold mb-3">Sistema de Verificación Pública</h4>
+              <p className="text-gray-200 leading-relaxed mb-3">
+                Cualquier persona puede verificar la autenticidad de un certificado Steady Guardians en línea. 
+                Simplemente visite <strong>steadyguardians.com/verify</strong> e ingrese el ID del perro o 
+                escanee el código QR del certificado.
+              </p>
+              <p className="text-sm text-gray-300">
+                El sistema mostrará: clasificación (Servicio/Soporte Emocional), programa completado, 
+                fecha de certificación, estado de vigencia y validación oficial. La información es pública 
+                y transparente, sin incluir datos personales del tutor.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-12 text-center">
-          <p className="text-gray-400 text-sm max-w-3xl mx-auto">
-            © 2026 Steady Guardians · Comprometidos con el bienestar animal, la transparencia legal y la responsabilidad profesional
+        {/* Disclaimer */}
+        <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+          <p className="text-gray-300 text-sm leading-relaxed text-center">
+            <strong>Compromiso de transparencia:</strong> Steady Guardians emite certificados profesionales que 
+            documentan el entrenamiento completado de manera legal y verificable. Nuestra certificación es un 
+            documento válido que respalda las habilidades entrenadas y cumple con normativas vigentes. 
+            Diferenciamos claramente entre Perros de Servicio (con derechos de acceso legal según Ley 1618/2013) 
+            y Perros de Soporte Emocional (sin garantías automáticas de acceso público).
           </p>
         </div>
       </div>
