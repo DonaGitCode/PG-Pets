@@ -237,7 +237,7 @@ export default function VerificationCard() {
                   <div className="flex flex-col sm:flex-row items-center sm:space-x-4 text-center sm:text-left">
                     <div className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center shadow-lg mb-3 sm:mb-0 p-3">
                       <img
-                        src={`${process.env.NODE_ENV === 'production' ? '/PG-Pets' : ''}/images/Logo.png`}
+                        src="/images/Logo.png"
                         alt="Steady Guardians Logo"
                         className="w-full h-full object-contain"
                       />
@@ -458,7 +458,7 @@ export default function VerificationCard() {
                     <div className="flex items-center space-x-3 md:space-x-4">
                       <div className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center p-3">
                         <img
-                          src={`${process.env.NODE_ENV === 'production' ? '/PG-Pets' : ''}/images/Logo.png`}
+                          src="/images/Logo.png"
                           alt="Steady Guardians Logo"
                           className="w-full h-full object-contain"
                         />

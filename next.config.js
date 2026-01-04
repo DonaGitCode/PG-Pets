@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/PG-Pets',
-  assetPrefix: '/PG-Pets',
+  // basePath and assetPrefix removed for custom domain
   skipTrailingSlashRedirect: true,
   images: {
     remotePatterns: [

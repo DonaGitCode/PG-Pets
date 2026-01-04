@@ -14,7 +14,7 @@ export default function Footer() {
             <div className="flex items-center space-x-2 mb-4">
               <div className="relative w-16 h-16 md:w-20 md:h-20">
                 <img
-                  src={`${process.env.NODE_ENV === 'production' ? '/PG-Pets' : ''}/images/Logo.png`}
+                  src="/images/Logo.png"
                   alt="Steady Guardians Logo"
                   className="w-full h-full object-contain"
                 />
