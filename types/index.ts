@@ -5,7 +5,7 @@ export interface Certification {
   animal_type: string
   animal_name: string
   animal_photo: string | null
-  program_type: 'Apoyo Emocional' | 'Servicio' | 'Lazarillo (Guía)' | 'Alerta Médica' | 'Evaluación Conductual'
+  program_type: 'Apoyo Emocional' | 'Servicio' | 'Lazarillo (Guía)' | 'Alerta Médica' | 'Evaluación Conductual' | 'Asistencia Psiquiátrica'
   issued_at: string
   valid_until: string | null
   scope: string | null

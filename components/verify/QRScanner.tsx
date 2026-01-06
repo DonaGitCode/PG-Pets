@@ -70,7 +70,23 @@ export default function QRScanner({ onScan, onClose, onError }: QRScannerProps) 
           if (!hasScannedRef.current) {
             hasScannedRef.current = true
             console.log('QR Code detected:', decodedText)
-            onScan(decodedText)
+            
+            // Extraer solo el cert_id de la URL
+            // Si es URL: http://localhost:3001/verify?id=SG-BOG-AM-X7K2N9P4
+            // Si es solo código: SG-BOG-AM-X7K2N9P4
+            let certId = decodedText
+            try {
+              const url = new URL(decodedText)
+              const idParam = url.searchParams.get('id')
+              if (idParam) {
+                certId = idParam
+              }
+            } catch (e) {
+              // No es una URL válida, usar el texto como está
+              certId = decodedText.toUpperCase()
+            }
+            
+            onScan(certId)
             stopScanner()
           }
         },

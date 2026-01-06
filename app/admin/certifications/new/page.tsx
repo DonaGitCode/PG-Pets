@@ -30,7 +30,8 @@ const PROGRAMS = [
   'Servicio',
   'Lazarillo (Guía)',
   'Alerta Médica',
-  'Evaluación Conductual'
+  'Evaluación Conductual',
+  'Asistencia Psiquiátrica'
 ]
 
 const STATUS_OPTIONS = [

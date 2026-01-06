@@ -22,7 +22,7 @@ export default function Programs() {
       id: 'perros-servicio',
       title: 'Perros de Servicio',
       icon: Briefcase,
-      image: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&q=80&w=1200',
+      image: 'https://i.pinimg.com/736x/f6/ce/b2/f6ceb22a988fac13e65df27482cd1d7f.jpg',
       description: 'Perros entrenados profesionalmente para realizar tareas específicas en beneficio de personas con discapacidades físicas, sensoriales o médicas.',
       explanation: 'Los perros de servicio son animales de trabajo altamente capacitados que ejecutan funciones concretas y medibles para asistir a personas con necesidades específicas.',
       subcategories: [
@@ -161,7 +161,7 @@ export default function Programs() {
                 {/* Category Card */}
                 <div className={`card flex flex-col ${isFirst ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                   {/* Image */}
-                  <div className="relative h-72 md:h-auto md:w-2/5 flex-shrink-0 hidden md:block">
+                  <div className="relative h-72 md:h-auto md:w-2/5 flex-shrink-0">
                     <Image
                       src={category.image}
                       alt={category.title}
@@ -183,18 +183,6 @@ export default function Programs() {
 
                   {/* Content */}
                   <div className="p-8 md:w-3/5">
-                    {/* Mobile Title - Only shown when image is hidden */}
-                    <div className="md:hidden mb-6">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center">
-                          <Icon className="w-6 h-6 text-primary-600" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-900">
-                          {category.title}
-                        </h3>
-                      </div>
-                    </div>
-
                     <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                       {category.description}
                     </p>

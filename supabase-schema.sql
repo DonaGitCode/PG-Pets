@@ -15,22 +15,28 @@ CREATE TABLE IF NOT EXISTS certifications (
   id BIGSERIAL PRIMARY KEY,
   cert_id TEXT UNIQUE NOT NULL,
   
-  -- Información del entrenamiento
-  status TEXT NOT NULL DEFAULT 'Vigente' CHECK (status IN ('Vigente', 'Condicional', 'Vencido', 'Revocado')),
+  -- Información del animal
   animal_type TEXT NOT NULL DEFAULT 'Perro',
   animal_name TEXT NOT NULL,
   animal_photo TEXT,
+  vaccination_record_url TEXT, -- URL del documento PDF con el registro de vacunas
   program_type TEXT NOT NULL CHECK (program_type IN (
     'Apoyo Emocional',
     'Servicio',
     'Lazarillo (Guía)',
     'Alerta Médica',
-    'Evaluación Conductual'
+    'Evaluación Conductual',
+    'Asistencia Psiquiátrica'
   )),
   
   -- Información del entrenador
   trainer_name TEXT NOT NULL,
   verification_code TEXT UNIQUE NOT NULL,
+  
+  -- Información del propietario
+  owner_name TEXT,
+  owner_phone TEXT,
+  owner_email TEXT,
   
   -- Fechas
   issued_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),

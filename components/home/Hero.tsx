@@ -78,7 +78,7 @@ export default function Hero() {
           </div>
 
           {/* Hero Image */}
-          <div className="relative h-[400px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+          <div className="relative h-[400px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl hidden lg:block">
             <Image
               src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=80&w=1200"
               alt="Perro de asistencia entrenado profesionalmente"
