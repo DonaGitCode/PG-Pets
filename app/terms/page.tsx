@@ -643,7 +643,7 @@ export default function TermsAndConditions() {
                 <div>
                   <p className="font-semibold mb-1">Teléfono:</p>
                   <p>+57 (601) 123-4567</p>
-                  <p>WhatsApp: +57 310 123 4567</p>
+                  <p>WhatsApp: +57 318 840 1253</p>
                 </div>
                 <div>
                   <p className="font-semibold mb-1">Sitio web:</p>
