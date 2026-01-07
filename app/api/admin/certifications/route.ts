@@ -1,18 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase'
+import jwt from 'jsonwebtoken'
 
 // Verificar autenticación
 async function verifyAuth(request: NextRequest) {
   const authHeader = request.headers.get('authorization')
-  
+  const JWT_SECRET = process.env.JWT_SECRET || 'steady-guardians-super-secret-key-2026-cambiar-en-produccion'
+
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return false
   }
 
   try {
     const token = authHeader.substring(7)
-    const decoded = JSON.parse(Buffer.from(token, 'base64').toString())
-    return decoded.authenticated && decoded.expires > Date.now()
+    const decoded = jwt.verify(token, JWT_SECRET) as { authenticated: boolean; email: string }
+    return !!decoded && decoded.authenticated
   } catch {
     return false
   }

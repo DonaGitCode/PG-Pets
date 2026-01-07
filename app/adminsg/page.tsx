@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Shield, Plus, Edit, Trash2, Search, LogOut, Eye, Upload, FileText, Download, X, Check, QrCode } from 'lucide-react'
+import { Shield, Plus, Edit, Trash2, Search, LogOut, Eye, Upload, FileText, Download, X, Check, QrCode, Barcode } from 'lucide-react'
 import Image from 'next/image'
 import QRCodeLib from 'qrcode'
 import { createClient } from '@/lib/supabase'
@@ -186,8 +186,8 @@ export default function AdminPanel() {
 
   const handleDownloadQR = async (certId: string) => {
     try {
-      // URL de verificación basada en entorno (producción o desarrollo)
-      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin
+      // URL fija a dominio público (evita localhost)
+      const baseUrl = 'https://steadyguardians.com'
       const verifyUrl = `${baseUrl}/verify?id=${certId}`
       
       // Generar QR code como Data URL con alta calidad
@@ -211,6 +211,38 @@ export default function AdminPanel() {
     } catch (error) {
       console.error('Error al generar QR:', error)
       alert('Error al generar código QR')
+    }
+  }
+
+  const handleDownloadBarcode = async (verificationCode: string) => {
+    try {
+      // Cargar librería en el cliente dinámicamente
+      const JsBarcode = (await import('jsbarcode')).default as any
+      // Crear canvas temporal
+      const canvas = document.createElement('canvas')
+      // Generar código de barras en formato CODE128
+      JsBarcode(canvas, verificationCode, {
+        format: 'CODE128',
+        width: 3,
+        height: 150,
+        displayValue: true,
+        margin: 20,
+        background: '#FFFFFF',
+        lineColor: '#000000',
+        fontOptions: 'bold',
+        fontSize: 20
+      })
+
+      const dataUrl = canvas.toDataURL('image/png')
+      const link = document.createElement('a')
+      link.href = dataUrl
+      link.download = `BARCODE-${verificationCode}.png`
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    } catch (error) {
+      console.error('Error al generar código de barras:', error)
+      alert('Error al generar código de barras')
     }
   }
 
@@ -431,6 +463,14 @@ export default function AdminPanel() {
                         <span className="text-sm font-medium">QR</span>
                       </button>
                       <button
+                        onClick={() => handleDownloadBarcode(cert.verification_code)}
+                        className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-colors"
+                        title="Descargar Código de Barras"
+                      >
+                        <Barcode className="w-4 h-4" />
+                        <span className="text-sm font-medium">Barras</span>
+                      </button>
+                      <button
                         onClick={() => openModal('edit', cert)}
                         className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-colors"
                       >
@@ -544,6 +584,13 @@ export default function AdminPanel() {
                                 title="Descargar QR"
                               >
                                 <QrCode className="w-5 h-5" />
+                              </button>
+                              <button
+                                onClick={() => handleDownloadBarcode(cert.verification_code)}
+                                className="text-purple-600 hover:text-purple-900"
+                                title="Descargar Código de Barras"
+                              >
+                                <Barcode className="w-5 h-5" />
                               </button>
                               <button
                                 onClick={() => openModal('edit', cert)}

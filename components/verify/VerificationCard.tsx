@@ -31,7 +31,7 @@ export default function VerificationCard() {
   const searchParams = useSearchParams()
   const [certId, setCertId] = useState('')
   const [verificationCode, setVerificationCode] = useState('')
-  const [searchMode, setSearchMode] = useState<'id' | 'code'>('id')
+  const [searchMode, setSearchMode] = useState<'id' | 'code'>('code')
   const [isSearching, setIsSearching] = useState(false)
   const [result, setResult] = useState<Certification | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -69,7 +69,7 @@ export default function VerificationCard() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [searchParams])
 
-  const handleSearch = async (id?: string) => {
+  const handleSearch = async (id?: string, codeArg?: string) => {
     let searchValue = ''
     let searchField = ''
     
@@ -87,7 +87,7 @@ export default function VerificationCard() {
         return
       }
     } else {
-      searchValue = verificationCode.trim().toUpperCase()
+      searchValue = (codeArg || verificationCode.trim()).toUpperCase()
       searchField = 'verification_code'
       if (!searchValue) {
         setError('Por favor ingresa el código de verificación')
@@ -134,10 +134,12 @@ export default function VerificationCard() {
   }
 
   const handleBarcodeScan = (scannedCode: string) => {
-    setVerificationCode(scannedCode.toUpperCase())
+    const normalized = scannedCode.toUpperCase()
+    setVerificationCode(normalized)
     setShowBarcodeScanner(false)
     setSearchMode('code')
-    handleSearch()
+    // Ejecuta búsqueda inmediata con el valor escaneado
+    handleSearch(undefined, normalized)
   }
 
   const handleScannerError = (errorMessage: string) => {
@@ -165,22 +167,8 @@ export default function VerificationCard() {
 
         {/* Search Methods */}
         <div className="max-w-4xl mx-auto mb-8">
-          {/* Search Mode Tabs */}
+          {/* Search Mode Tabs (Código primero, luego ID) */}
           <div className="flex gap-2 mb-6 bg-gray-100 p-1 rounded-lg w-fit">
-            <button
-              onClick={() => {
-                setSearchMode('id')
-                setError(null)
-              }}
-              className={`px-4 py-2 rounded-md font-medium transition-colors ${
-                searchMode === 'id'
-                  ? 'bg-white text-primary-600 shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              <Search className="w-4 h-4 inline-block mr-2" />
-              ID de Certificación
-            </button>
             <button
               onClick={() => {
                 setSearchMode('code')
@@ -194,6 +182,20 @@ export default function VerificationCard() {
             >
               <FileText className="w-4 h-4 inline-block mr-2" />
               Código de Verificación
+            </button>
+            <button
+              onClick={() => {
+                setSearchMode('id')
+                setError(null)
+              }}
+              className={`px-4 py-2 rounded-md font-medium transition-colors ${
+                searchMode === 'id'
+                  ? 'bg-white text-primary-600 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              <Search className="w-4 h-4 inline-block mr-2" />
+              ID de Certificación
             </button>
           </div>
 
@@ -389,10 +391,123 @@ export default function VerificationCard() {
           </div>
         )}
 
-        {/* Result Modal - Pop-up optimizado para móvil */}
+        {/* Result Modal - Pop-up optimizado para móvil con animaciones Apple */}
         {result && (
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-end md:items-center justify-center p-0 md:p-4">
-            <div className="bg-white w-full md:max-w-4xl md:rounded-2xl overflow-hidden shadow-2xl max-h-screen overflow-y-auto">
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-end md:items-center justify-center p-0 md:p-4 animate-fadeIn">
+            <style jsx>{`
+              @keyframes fadeIn {
+                from {
+                  opacity: 0;
+                }
+                to {
+                  opacity: 1;
+                }
+              }
+              @keyframes slideUp {
+                from {
+                  transform: translateY(100%);
+                  opacity: 0;
+                }
+                to {
+                  transform: translateY(0);
+                  opacity: 1;
+                }
+              }
+              @keyframes logoEntrance {
+                0% {
+                  transform: scale(5) translateY(0);
+                  opacity: 0;
+                }
+                30% {
+                  opacity: 1;
+                }
+                100% {
+                  transform: scale(1) translateY(0);
+                  opacity: 1;
+                }
+              }
+              @keyframes shimmer {
+                0% {
+                  background-position: -1000px 0;
+                }
+                100% {
+                  background-position: 1000px 0;
+                }
+              }
+              @keyframes pulse {
+                0%, 100% {
+                  opacity: 1;
+                }
+                50% {
+                  opacity: 0.8;
+                }
+              }
+              @keyframes stamp {
+                0% {
+                  transform: scale(0) rotate(-45deg);
+                  opacity: 0;
+                }
+                50% {
+                  transform: scale(1.1) rotate(5deg);
+                }
+                100% {
+                  transform: scale(1) rotate(0deg);
+                  opacity: 1;
+                }
+              }
+              @keyframes sealSweep {
+                0% {
+                  transform: translateX(-150%) rotate(-45deg);
+                  opacity: 0;
+                }
+                10% {
+                  opacity: 1;
+                }
+                90% {
+                  opacity: 1;
+                }
+                100% {
+                  transform: translateX(150%) rotate(-45deg);
+                  opacity: 0;
+                }
+              }
+              .animate-fadeIn {
+                animation: fadeIn 0.3s ease-out;
+              }
+              .animate-slideUp {
+                animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+              }
+              .animate-logoEntrance {
+                animation: logoEntrance 1s cubic-bezier(0.16, 1, 0.3, 1);
+              }
+              .shimmer {
+                background: linear-gradient(
+                  90deg,
+                  rgba(255, 255, 255, 0) 0%,
+                  rgba(255, 255, 255, 0.3) 50%,
+                  rgba(255, 255, 255, 0) 100%
+                );
+                background-size: 1000px 100%;
+                animation: shimmer 2s infinite;
+              }
+              .gradient-apple {
+                background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+              }
+              .gradient-apple-green {
+                background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
+              }
+              .text-shadow-soft {
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+              }
+              .seal-stamp {
+                animation: stamp 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+              }
+              .seal-sweep {
+                animation: sealSweep 3s ease-in-out infinite;
+              }
+            `}</style>
+            
+            <div className="bg-white w-full md:max-w-4xl md:rounded-3xl overflow-hidden shadow-2xl max-h-screen overflow-y-auto animate-slideUp">
               {/* Close Button */}
               <button
                 onClick={() => {
@@ -400,50 +515,57 @@ export default function VerificationCard() {
                   setCertId('')
                   setError(null)
                 }}
-                className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all"
+                className="absolute top-4 right-4 z-20 w-10 h-10 bg-white/95 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110 active:scale-95"
               >
                 <XCircle className="w-6 h-6 text-gray-600" />
               </button>
 
-              {/* Header del Certificado */}
-              <div className="bg-gradient-to-r from-primary-600 to-primary-800 text-white p-6 md:p-8">
-                <div className="flex flex-col items-center gap-4 text-center">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg p-3">
+              {/* Header del Certificado con gradiente Apple */}
+              <div className="relative gradient-apple text-white p-6 md:p-8 overflow-hidden">
+                {/* Efecto shimmer */}
+                <div className="absolute inset-0 shimmer opacity-30"></div>
+                
+                <div className="relative flex flex-col items-center gap-4 text-center">
+                  {/* Logo con animación de entrada */}
+                  <div className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center shadow-2xl p-4 animate-logoEntrance">
                     <img src="/images/Logo.png" alt="Logo" className="w-full h-full object-contain" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold">Certificación Auténtica</h2>
-                    <p className="text-primary-100 mt-1">Steady Guardians · Colombia</p>
+                    <h2 className="text-2xl md:text-3xl font-bold text-shadow-soft">Certificación Auténtica</h2>
+                    <p className="text-white/90 mt-1 font-medium">Steady Guardians · Colombia</p>
                   </div>
                   
-                  {/* Estado del Certificado - Mejorado con efectos */}
+                  {/* Estado del Certificado - Mejorado con efectos Apple */}
                   <div className="w-full max-w-sm relative">
-                    <div className={`relative overflow-hidden rounded-2xl p-6 shadow-2xl border-4 ${
+                    <div className={`relative overflow-hidden rounded-3xl p-6 shadow-2xl border-4 transform transition-all hover:scale-105 ${
                       result.status === 'Vigente' 
-                        ? 'bg-gradient-to-br from-green-500 via-green-600 to-emerald-700 border-green-300' :
+                        ? 'bg-gradient-to-br from-emerald-500 via-green-600 to-teal-700 border-emerald-200' :
                       result.status === 'Condicional' 
-                        ? 'bg-gradient-to-br from-yellow-500 via-yellow-600 to-amber-700 border-yellow-300' :
+                        ? 'bg-gradient-to-br from-amber-500 via-orange-600 to-yellow-700 border-amber-200' :
                       result.status === 'Vencido' 
-                        ? 'bg-gradient-to-br from-gray-500 via-gray-600 to-slate-700 border-gray-300' :
-                      'bg-gradient-to-br from-red-500 via-red-600 to-rose-700 border-red-300'
+                        ? 'bg-gradient-to-br from-slate-500 via-gray-600 to-zinc-700 border-slate-200' :
+                      'bg-gradient-to-br from-rose-500 via-red-600 to-pink-700 border-rose-200'
                     }`}>
+                      {/* Brillo animado */}
+                      <div className="absolute inset-0 shimmer opacity-20"></div>
+                      
                       {/* Icono según estado */}
-                      <div className="flex items-center justify-center gap-3 mb-2">
+                      <div className="relative flex items-center justify-center gap-3 mb-2">
                         {result.status === 'Vigente' ? (
-                          <CheckCircle className="w-8 h-8 text-white drop-shadow-lg" strokeWidth={3} />
+                          <CheckCircle className="w-10 h-10 text-white drop-shadow-lg animate-pulse" strokeWidth={3} />
                         ) : result.status === 'Condicional' ? (
-                          <AlertCircle className="w-8 h-8 text-white drop-shadow-lg" strokeWidth={3} />
+                          <AlertCircle className="w-10 h-10 text-white drop-shadow-lg" strokeWidth={3} />
                         ) : result.status === 'Vencido' ? (
-                          <XCircle className="w-8 h-8 text-white drop-shadow-lg" strokeWidth={3} />
+                          <XCircle className="w-10 h-10 text-white drop-shadow-lg" strokeWidth={3} />
                         ) : (
-                          <XCircle className="w-8 h-8 text-white drop-shadow-lg" strokeWidth={3} />
+                          <XCircle className="w-10 h-10 text-white drop-shadow-lg" strokeWidth={3} />
                         )}
                         <div className="text-4xl font-black text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)] tracking-wide">
                           {result.status.toUpperCase()}
                         </div>
                       </div>
                       
-                      <div className="text-sm font-bold text-white/90 uppercase tracking-wider drop-shadow-md">
+                      <div className="relative text-sm font-bold text-white/95 uppercase tracking-widest drop-shadow-md">
                         Estado del Certificado
                       </div>
                       
@@ -458,11 +580,11 @@ export default function VerificationCard() {
 
               {/* Contenido Principal */}
               <div className="p-4 md:p-6 space-y-4">
-                {/* Foto del Animal */}
+                {/* Foto del Animal con animación */}
                 <div className="max-w-xs mx-auto relative">
                   {result.animal_photo ? (
-                    <div className="relative">
-                      <div className="aspect-square rounded-2xl overflow-hidden shadow-lg border-4 border-primary-200">
+                    <div className="relative transform transition-all hover:scale-105">
+                      <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white ring-4 ring-gray-100">
                         <Image
                           src={result.animal_photo}
                           alt={result.animal_name}
@@ -473,45 +595,6 @@ export default function VerificationCard() {
                       </div>
                       {/* Sello de Verificación Real - Estilo Oficial */}
                       <div className="absolute -bottom-6 -right-6 w-32 h-32 z-10">
-                        {/* Animaciones del sello */}
-                        <style jsx>{`
-                          @keyframes stamp {
-                            0% {
-                              transform: scale(0) rotate(-45deg);
-                              opacity: 0;
-                            }
-                            50% {
-                              transform: scale(1.1) rotate(5deg);
-                            }
-                            100% {
-                              transform: scale(1) rotate(0deg);
-                              opacity: 1;
-                            }
-                          }
-                          .seal-stamp {
-                            animation: stamp 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                          }
-                          @keyframes sealSweep {
-                            0% {
-                              transform: translateX(-150%) rotate(-45deg);
-                              opacity: 0;
-                            }
-                            10% {
-                              opacity: 1;
-                            }
-                            90% {
-                              opacity: 1;
-                            }
-                            100% {
-                              transform: translateX(150%) rotate(-45deg);
-                              opacity: 0;
-                            }
-                          }
-                          .seal-sweep {
-                            animation: sealSweep 3s ease-in-out infinite;
-                          }
-                        `}</style>
-                        
                         <div className="seal-stamp relative w-full h-full overflow-hidden rounded-full">
                           {/* Círculo exterior con efecto de sello dentado */}
                           <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full">
@@ -584,22 +667,22 @@ export default function VerificationCard() {
                     </div>
                   )}
                   {/* Información del Animal */}
-                  <div className="mt-4 md:mt-6 text-center">
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">{result.animal_name}</h3>
-                    <p className="text-base md:text-lg text-gray-600 font-medium">{result.animal_type}</p>
+                  <div className="mt-6 text-center">
+                    <h3 className="text-3xl md:text-4xl font-black text-gray-900 mb-2 text-shadow-soft">{result.animal_name}</h3>
+                    <p className="text-lg md:text-xl text-gray-600 font-semibold">{result.animal_type}</p>
                   </div>
                 </div>
 
                 {/* Información del Certificado - Optimizado */}
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {/* Propietario */}
                   {result.owner_name && (
-                    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 shadow-sm border-2 border-blue-200">
+                    <div className="bg-white rounded-2xl p-5 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
                       <div className="space-y-2">
-                        <p className="text-xs font-bold text-blue-700 uppercase tracking-wide">Propietario</p>
-                        <p className="text-lg md:text-xl font-bold text-gray-900">{result.owner_name}</p>
+                        <p className="text-xs font-bold text-gray-500 uppercase tracking-wide">Propietario</p>
+                        <p className="text-xl md:text-2xl font-bold text-gray-900">{result.owner_name}</p>
                         {(result.owner_phone || result.owner_email) && (
-                          <div className="mt-2 space-y-1 pt-2 border-t border-blue-200">
+                          <div className="mt-3 space-y-2 pt-3 border-t border-gray-200">
                             {result.owner_phone && (
                               <div className="flex items-center gap-2 text-sm text-gray-700">
                                 <span className="font-semibold">Tel:</span>
@@ -618,42 +701,75 @@ export default function VerificationCard() {
                     </div>
                   )}
 
-                  {/* ID y Consulta - Compactado en grid */}
+                  {/* ID y Consulta */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-3 border-2 border-gray-300 shadow-sm">
-                      <p className="text-xs font-bold text-gray-600 uppercase mb-1 tracking-wide">ID Certificación</p>
+                    <div className="bg-white rounded-2xl p-4 border border-gray-200 shadow-md hover:shadow-lg transition-shadow">
+                      <p className="text-xs font-bold text-gray-500 uppercase mb-1 tracking-wide">ID Certificación</p>
                       <p className="text-sm font-mono font-bold text-gray-900 break-all">{result.cert_id}</p>
                     </div>
-                    <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-3 border-2 border-blue-300 shadow-sm">
-                      <p className="text-xs font-bold text-blue-700 uppercase mb-1 tracking-wide">Consultado</p>
+                    <div className="bg-white rounded-2xl p-4 border border-gray-200 shadow-md hover:shadow-lg transition-shadow">
+                      <p className="text-xs font-bold text-gray-500 uppercase mb-1 tracking-wide">Consultado</p>
                       <p className="text-sm font-bold text-gray-900">{new Date().toLocaleDateString('es-CO')}</p>
                     </div>
                   </div>
 
-                  {/* Programa */}
-                  <div className="bg-gradient-to-br from-primary-50 to-blue-50 rounded-xl p-3 border-2 border-primary-300 shadow-sm">
-                    <div className="flex items-center gap-2">
-                      <Shield className="w-5 h-5 text-primary-600" strokeWidth={2.5} />
-                      <div className="flex-1">
-                        <p className="text-xs font-bold text-primary-700 uppercase tracking-wide">Programa</p>
-                        <p className="text-base font-bold text-gray-900">{result.program_type}</p>
+                  {/* Clasificación y Tipo de Servicio con gradiente Apple */}
+                  <div className="relative gradient-apple-green rounded-3xl p-6 shadow-xl overflow-hidden transform hover:scale-[1.02] transition-transform">
+                    {/* Shimmer effect */}
+                    <div className="absolute inset-0 shimmer opacity-20"></div>
+                    
+                    {/* Clasificación Principal */}
+                    <div className="relative text-center mb-5 pb-4 border-b-2 border-white/30">
+                      <p className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight mb-2 text-shadow-soft leading-tight">
+                        {result.program_type === 'Apoyo Emocional' 
+                          ? 'ANIMAL DE SOPORTE EMOCIONAL'
+                          : result.program_type === 'Servicio' || result.program_type === 'Lazarillo (Guía)' || result.program_type === 'Alerta Médica' || result.program_type === 'Asistencia Psiquiátrica'
+                          ? 'PERRO DE SERVICIO'
+                          : 'EVALUACIÓN CONDUCTUAL'}
+                      </p>
+                      <p className="text-sm text-white/90 uppercase tracking-wider font-bold">
+                        {result.program_type === 'Apoyo Emocional' 
+                          ? 'Emotional Support Animal (ESA)'
+                          : result.program_type === 'Servicio' || result.program_type === 'Lazarillo (Guía)' || result.program_type === 'Alerta Médica' || result.program_type === 'Asistencia Psiquiátrica'
+                          ? 'Service Dog'
+                          : 'Behavioral Evaluation'}
+                      </p>
+                    </div>
+                    
+                    {/* Tipo de Programa Específico */}
+                    <div className="relative flex items-center gap-3 bg-white/20 backdrop-blur-sm rounded-2xl p-4 mb-4">
+                      <Shield className="w-7 h-7 text-white flex-shrink-0 drop-shadow-lg" strokeWidth={2.5} />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs font-bold text-white/80 uppercase tracking-wide mb-1">Programa de Entrenamiento</p>
+                        <p className="text-lg md:text-xl font-black text-white truncate">{result.program_type}</p>
                       </div>
+                    </div>
+                    
+                    {/* Nota Legal */}
+                    <div className="relative pt-4 border-t border-white/30">
+                      <p className="text-xs text-white/90 leading-relaxed font-medium">
+                        {result.program_type === 'Apoyo Emocional' 
+                          ? 'Los animales de soporte emocional no tienen derechos de acceso público garantizados bajo la ley colombiana. Su función principal es proporcionar compañía y apoyo emocional.'
+                          : result.program_type === 'Servicio' || result.program_type === 'Lazarillo (Guía)' || result.program_type === 'Alerta Médica' || result.program_type === 'Asistencia Psiquiátrica'
+                          ? 'Los perros de servicio tienen derechos de acceso público según la legislación vigente y están entrenados para realizar tareas específicas en beneficio de personas con discapacidad.'
+                          : 'Certificación que valida la evaluación del comportamiento y temperamento del animal.'}
+                      </p>
                     </div>
                   </div>
 
-                  {/* Fechas - Compactado */}
+                  {/* Fechas */}
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-white rounded-xl p-3 border-2 border-green-200 shadow-sm">
-                      <div className="flex items-center gap-1 mb-1">
-                        <Calendar className="w-3 h-3 text-green-600" />
-                        <p className="text-xs font-bold text-green-700 uppercase">Emisión</p>
+                    <div className="bg-white rounded-2xl p-4 border border-gray-200 shadow-md hover:shadow-lg transition-shadow">
+                      <div className="flex items-center gap-1 mb-2">
+                        <Calendar className="w-4 h-4 text-gray-500" />
+                        <p className="text-xs font-bold text-gray-500 uppercase">Emisión</p>
                       </div>
                       <p className="text-sm font-bold text-gray-900">{formatDate(result.issued_at)}</p>
                     </div>
-                    <div className="bg-white rounded-xl p-3 border-2 border-blue-200 shadow-sm">
-                      <div className="flex items-center gap-1 mb-1">
-                        <Calendar className="w-3 h-3 text-blue-600" />
-                        <p className="text-xs font-bold text-blue-700 uppercase">Vigencia</p>
+                    <div className="bg-white rounded-2xl p-4 border border-gray-200 shadow-md hover:shadow-lg transition-shadow">
+                      <div className="flex items-center gap-1 mb-2">
+                        <Calendar className="w-4 h-4 text-gray-500" />
+                        <p className="text-xs font-bold text-gray-500 uppercase">Vigencia</p>
                       </div>
                       <p className="text-sm font-bold text-gray-900">
                         {result.valid_until ? formatDate(result.valid_until) : 'Indefinida'}
@@ -663,14 +779,14 @@ export default function VerificationCard() {
 
                   {/* Detalles y Funciones del Entrenamiento */}
                   {result.scope && (
-                    <div className="bg-gradient-to-br from-purple-50 via-indigo-50 to-purple-50 rounded-xl md:rounded-2xl p-4 md:p-5 border-2 border-purple-300 shadow-md">
-                      <div className="flex items-start gap-3 mb-3">
-                        <div className="w-12 h-12 md:w-14 md:h-14 bg-purple-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                          <FileText className="w-6 h-6 md:w-7 md:h-7 text-white" strokeWidth={2.5} />
+                    <div className="bg-white rounded-2xl p-5 md:p-6 border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center flex-shrink-0 shadow-inner">
+                          <FileText className="w-6 h-6 md:w-7 md:h-7 text-gray-700" strokeWidth={2} />
                         </div>
-                        <div className="flex-1">
-                          <p className="text-xs md:text-sm font-bold text-purple-700 uppercase mb-1 tracking-wide">Funciones y Habilidades Certificadas</p>
-                          <p className="text-sm md:text-base text-gray-700 leading-relaxed">{result.scope}</p>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm md:text-base font-bold text-gray-700 uppercase mb-2 tracking-wide">Funciones y Habilidades Certificadas</p>
+                          <p className="text-sm md:text-base text-gray-900 leading-relaxed">{result.scope}</p>
                         </div>
                       </div>
                     </div>

@@ -52,7 +52,6 @@ export default function BarcodeScanner({ onScan, onClose, onError }: BarcodeScan
       codeReaderRef.current = codeReader
       const devices: MediaDeviceInfo[] = await codeReader.listVideoInputDevices()
       const preferredDeviceId = devices.find((d: MediaDeviceInfo) => d.label?.toLowerCase().includes('back'))?.deviceId || devices[0]?.deviceId
-
       await codeReader.decodeFromVideoDevice(preferredDeviceId, 'barcode-video', (result: Result | undefined, err: unknown) => {
         if (result && !hasScannedRef.current) {
           hasScannedRef.current = true
