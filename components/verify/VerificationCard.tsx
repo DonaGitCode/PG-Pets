@@ -59,11 +59,12 @@ export default function VerificationCard() {
     checkMobile()
     window.addEventListener('resize', checkMobile)
     
-    // Check for ID in URL params
+    // Check for ID in URL params (from QR code)
     const idFromUrl = searchParams?.get('id')
     if (idFromUrl) {
+      setSearchMode('id') // Switch to ID mode for QR scan
       setCertId(idFromUrl)
-      handleSearch(idFromUrl)
+      handleSearch(idFromUrl) // Auto-verify
     }
     
     return () => window.removeEventListener('resize', checkMobile)
