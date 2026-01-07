@@ -74,8 +74,18 @@ export default function VerificationCard() {
     let searchValue = ''
     let searchField = ''
     
-    if (searchMode === 'id') {
-      searchValue = (id || certId.trim()).toUpperCase()
+    // Si viene un ID directo (desde QR), usarlo sin importar el modo actual
+    if (id) {
+      searchValue = id.trim().toUpperCase()
+      searchField = 'cert_id'
+      // Validate format: SG-BOG-AM-X7K2N9P4
+      const regex = /^SG-[A-Z]{3}-[A-Z]{2,3}-[A-Z0-9]{8}$/
+      if (!regex.test(searchValue)) {
+        setError('Formato de ID inválido. Ejemplo: SG-BOG-AM-X7K2N9P4')
+        return
+      }
+    } else if (searchMode === 'id') {
+      searchValue = certId.trim().toUpperCase()
       searchField = 'cert_id'
       if (!searchValue) {
         setError('Por favor ingresa un ID de certificación')
