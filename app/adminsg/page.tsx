@@ -445,43 +445,47 @@ export default function AdminPanel() {
                       )}
                     </div>
 
-                    <div className="flex items-center gap-2 pt-3 border-t border-gray-200">
+                    <div className="grid grid-cols-2 gap-2 pt-3 border-t border-gray-200">
+                      {/* Primera fila */}
                       <a
                         href={`/verify?id=${cert.cert_id}`}
                         target="_blank"
-                        className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors"
+                        className="flex items-center justify-center gap-2 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors active:scale-95 touch-manipulation"
                       >
-                        <Eye className="w-4 h-4" />
-                        <span className="text-sm font-medium">Ver</span>
+                        <Eye className="w-5 h-5" />
+                        <span className="text-sm font-semibold">Ver</span>
                       </a>
                       <button
                         onClick={() => handleDownloadQR(cert.cert_id)}
-                        className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors"
+                        className="flex items-center justify-center gap-2 px-4 py-3 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors active:scale-95 touch-manipulation"
                         title="Descargar QR"
                       >
-                        <QrCode className="w-4 h-4" />
-                        <span className="text-sm font-medium">QR</span>
+                        <QrCode className="w-5 h-5" />
+                        <span className="text-sm font-semibold">QR</span>
                       </button>
+                      {/* Segunda fila */}
                       <button
                         onClick={() => handleDownloadBarcode(cert.verification_code)}
-                        className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-colors"
+                        className="flex items-center justify-center gap-2 px-4 py-3 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-colors active:scale-95 touch-manipulation"
                         title="Descargar Código de Barras"
                       >
-                        <Barcode className="w-4 h-4" />
-                        <span className="text-sm font-medium">Barras</span>
+                        <Barcode className="w-5 h-5" />
+                        <span className="text-sm font-semibold">Barras</span>
                       </button>
                       <button
                         onClick={() => openModal('edit', cert)}
-                        className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-colors"
+                        className="flex items-center justify-center gap-2 px-4 py-3 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-colors active:scale-95 touch-manipulation"
                       >
-                        <Edit className="w-4 h-4" />
-                        <span className="text-sm font-medium">Editar</span>
+                        <Edit className="w-5 h-5" />
+                        <span className="text-sm font-semibold">Editar</span>
                       </button>
+                      {/* Botón eliminar en fila completa */}
                       <button
                         onClick={() => handleDelete(cert.id, cert.cert_id)}
-                        className="px-3 py-2 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition-colors"
+                        className="col-span-2 flex items-center justify-center gap-2 px-4 py-3 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition-colors active:scale-95 touch-manipulation"
                       >
-                        <Trash2 className="w-4 h-4" />
+                        <Trash2 className="w-5 h-5" />
+                        <span className="text-sm font-semibold">Eliminar</span>
                       </button>
                     </div>
                   </div>
@@ -569,39 +573,39 @@ export default function AdminPanel() {
                             )}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <div className="flex items-center justify-end space-x-2">
+                            <div className="flex items-center justify-end gap-3">
                               <a
                                 href={`/verify?id=${cert.cert_id}`}
                                 target="_blank"
-                                className="text-blue-600 hover:text-blue-900"
-                                title="Ver"
+                                className="p-2 text-blue-600 hover:text-blue-900 hover:bg-blue-50 rounded-lg transition-colors"
+                                title="Ver Certificación"
                               >
                                 <Eye className="w-5 h-5" />
                               </a>
                               <button
                                 onClick={() => handleDownloadQR(cert.cert_id)}
-                                className="text-green-600 hover:text-green-900"
+                                className="p-2 text-green-600 hover:text-green-900 hover:bg-green-50 rounded-lg transition-colors"
                                 title="Descargar QR"
                               >
                                 <QrCode className="w-5 h-5" />
                               </button>
                               <button
                                 onClick={() => handleDownloadBarcode(cert.verification_code)}
-                                className="text-purple-600 hover:text-purple-900"
+                                className="p-2 text-purple-600 hover:text-purple-900 hover:bg-purple-50 rounded-lg transition-colors"
                                 title="Descargar Código de Barras"
                               >
                                 <Barcode className="w-5 h-5" />
                               </button>
                               <button
                                 onClick={() => openModal('edit', cert)}
-                                className="text-primary-600 hover:text-primary-900"
+                                className="p-2 text-primary-600 hover:text-primary-900 hover:bg-primary-50 rounded-lg transition-colors"
                                 title="Editar"
                               >
                                 <Edit className="w-5 h-5" />
                               </button>
                               <button
                                 onClick={() => handleDelete(cert.id, cert.cert_id)}
-                                className="text-red-600 hover:text-red-900"
+                                className="p-2 text-red-600 hover:text-red-900 hover:bg-red-50 rounded-lg transition-colors"
                                 title="Eliminar"
                               >
                                 <Trash2 className="w-5 h-5" />
