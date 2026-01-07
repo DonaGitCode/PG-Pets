@@ -1,34 +1,42 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase'
+import jwt from 'jsonwebtoken'
 
-// Verificar credenciales del administrador
+// Login: email + password, issue signed JWT (24h)
 export async function POST(request: NextRequest) {
   try {
-    const { password } = await request.json()
+    const { email, password } = await request.json()
 
-    // Validar contraseña del servidor
+    const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin@steadyguardians.com'
     const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'SteadyGuardians2026!'
+    const JWT_SECRET = process.env.JWT_SECRET || 'steady-guardians-super-secret-key-2026-cambiar-en-produccion'
 
-    if (password === ADMIN_PASSWORD) {
-      // Generar token de sesión
-      const sessionToken = Buffer.from(
-        JSON.stringify({
-          authenticated: true,
-          timestamp: Date.now(),
-          expires: Date.now() + (24 * 60 * 60 * 1000) // 24 horas
-        })
-      ).toString('base64')
-
-      return NextResponse.json({
-        success: true,
-        token: sessionToken
-      })
+    // Basic input validation
+    if (!email || !password) {
+      return NextResponse.json(
+        { success: false, error: 'Correo y contraseña son requeridos' },
+        { status: 400 }
+      )
     }
 
-    return NextResponse.json(
-      { success: false, error: 'Contraseña incorrecta' },
-      { status: 401 }
+    // Verify credentials against env
+    if (email !== ADMIN_USERNAME || password !== ADMIN_PASSWORD) {
+      return NextResponse.json(
+        { success: false, error: 'Credenciales inválidas' },
+        { status: 401 }
+      )
+    }
+
+    // Sign JWT with 24h expiration
+    const token = jwt.sign(
+      {
+        authenticated: true,
+        email,
+      },
+      JWT_SECRET,
+      { expiresIn: '24h' }
     )
+
+    return NextResponse.json({ success: true, token })
   } catch (error) {
     console.error('Error en autenticación:', error)
     return NextResponse.json(
@@ -38,11 +46,12 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// Verificar token de sesión
+// Verify JWT token
 export async function GET(request: NextRequest) {
   try {
     const authHeader = request.headers.get('authorization')
-    
+    const JWT_SECRET = process.env.JWT_SECRET || 'steady-guardians-super-secret-key-2026-cambiar-en-produccion'
+
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return NextResponse.json(
         { valid: false, error: 'Token no proporcionado' },
@@ -51,18 +60,10 @@ export async function GET(request: NextRequest) {
     }
 
     const token = authHeader.substring(7)
-    const decoded = JSON.parse(Buffer.from(token, 'base64').toString())
+    const decoded = jwt.verify(token, JWT_SECRET) as { authenticated: boolean; email: string }
 
-    // Verificar si el token ha expirado
-    if (decoded.expires < Date.now()) {
-      return NextResponse.json(
-        { valid: false, error: 'Sesión expirada' },
-        { status: 401 }
-      )
-    }
-
-    if (decoded.authenticated) {
-      return NextResponse.json({ valid: true })
+    if (decoded && decoded.authenticated) {
+      return NextResponse.json({ valid: true, email: decoded.email })
     }
 
     return NextResponse.json(

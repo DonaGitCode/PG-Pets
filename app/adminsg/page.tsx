@@ -34,6 +34,7 @@ export default function AdminPanel() {
   const [showModal, setShowModal] = useState(false)
   const [modalMode, setModalMode] = useState<'create' | 'edit'>('create')
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null)
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [authToken, setAuthToken] = useState<string | null>(null)
@@ -93,7 +94,7 @@ export default function AdminPanel() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ password })
+        body: JSON.stringify({ email, password })
       })
 
       const data = await response.json()
@@ -104,7 +105,7 @@ export default function AdminPanel() {
         sessionStorage.setItem('adminToken', data.token)
         loadCertifications()
       } else {
-        alert(data.error || 'Contraseña incorrecta')
+        alert(data.error || 'Credenciales inválidas')
       }
     } catch (error) {
       console.error('Error en login:', error)
@@ -234,7 +235,20 @@ export default function AdminPanel() {
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Contraseña de Administrador
+                Correo
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                placeholder="admin@steadyguardians.com"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Contraseña
               </label>
               <input
                 type="password"
