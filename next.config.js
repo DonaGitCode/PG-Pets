@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  // basePath and assetPrefix removed for custom domain
+  // Removed 'output: export' to enable API routes and server-side features
   skipTrailingSlashRedirect: true,
   images: {
     remotePatterns: [
@@ -18,7 +17,6 @@ const nextConfig = {
         hostname: '**',
       },
     ],
-    unoptimized: true,
   },
 }
 
