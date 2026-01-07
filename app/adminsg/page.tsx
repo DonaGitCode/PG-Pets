@@ -185,8 +185,9 @@ export default function AdminPanel() {
 
   const handleDownloadQR = async (certId: string) => {
     try {
-      // URL de verificación (usa la URL actual del navegador)
-      const verifyUrl = `${window.location.origin}/verify?id=${certId}`
+      // URL de verificación basada en entorno (producción o desarrollo)
+      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin
+      const verifyUrl = `${baseUrl}/verify?id=${certId}`
       
       // Generar QR code como Data URL con alta calidad
       const qrDataUrl = await QRCodeLib.toDataURL(verifyUrl, {

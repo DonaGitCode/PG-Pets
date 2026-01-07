@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { Search, QrCode, CheckCircle, XCircle, Calendar, FileText, Shield, AlertCircle, Smartphone, Download, Syringe } from 'lucide-react'
+import { Search, QrCode, CheckCircle, XCircle, Calendar, FileText, Shield, AlertCircle, Smartphone, Download, Syringe, Barcode } from 'lucide-react'
 import { formatDate, getStatusColor } from '@/lib/utils'
 import QRScanner from '@/components/verify/QRScanner'
+import BarcodeScanner from '@/components/verify/BarcodeScanner'
 import Image from 'next/image'
 import { createClient } from '@/lib/supabase'
 
@@ -35,6 +36,7 @@ export default function VerificationCard() {
   const [result, setResult] = useState<Certification | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [showScanner, setShowScanner] = useState(false)
+  const [showBarcodeScanner, setShowBarcodeScanner] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [consultationDate] = useState(new Date().toLocaleString('es-CO', {
     dateStyle: 'long',
@@ -129,6 +131,13 @@ export default function VerificationCard() {
     setCertId(scannedId)
     setShowScanner(false)
     handleSearch(scannedId)
+  }
+
+  const handleBarcodeScan = (scannedCode: string) => {
+    setVerificationCode(scannedCode.toUpperCase())
+    setShowBarcodeScanner(false)
+    setSearchMode('code')
+    handleSearch()
   }
 
   const handleScannerError = (errorMessage: string) => {
@@ -281,37 +290,70 @@ export default function VerificationCard() {
               </div>
             )}
 
-            {/* QR Scanner */}
-            <div className="card p-6 md:col-span-2 lg:col-span-1">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-accent-100 rounded-lg flex items-center justify-center">
-                  <QrCode className="w-5 h-5 text-accent-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900">Escanear QR</h3>
-                  <p className="text-xs text-gray-600">Usa la cámara de tu dispositivo</p>
-                </div>
-              </div>
-              <div className="space-y-3">
-                {isMobile && (
-                  <div className="flex items-center space-x-2 text-xs text-green-600 bg-green-50 rounded-lg p-2">
-                    <Smartphone className="w-4 h-4" />
-                    <span>Dispositivo móvil detectado</span>
+            {/* Scanner según modo */}
+            {searchMode === 'id' ? (
+              <div className="card p-6 md:col-span-2 lg:col-span-1">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-10 h-10 bg-accent-100 rounded-lg flex items-center justify-center">
+                    <QrCode className="w-5 h-5 text-accent-600" />
                   </div>
-                )}
-                <button
-                  onClick={() => setShowScanner(true)}
-                  className="w-full btn-secondary"
-                  disabled={isSearching}
-                >
-                  <QrCode className="w-5 h-5 inline-block mr-2" />
-                  Abrir Escáner
-                </button>
-                <p className="text-xs text-gray-500 text-center">
-                  Funciona en móviles y computadoras con cámara
-                </p>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Escanear QR</h3>
+                    <p className="text-xs text-gray-600">Usa la cámara de tu dispositivo</p>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  {isMobile && (
+                    <div className="flex items-center space-x-2 text-xs text-green-600 bg-green-50 rounded-lg p-2">
+                      <Smartphone className="w-4 h-4" />
+                      <span>Dispositivo móvil detectado</span>
+                    </div>
+                  )}
+                  <button
+                    onClick={() => setShowScanner(true)}
+                    className="w-full btn-secondary"
+                    disabled={isSearching}
+                  >
+                    <QrCode className="w-5 h-5 inline-block mr-2" />
+                    Abrir Escáner QR
+                  </button>
+                  <p className="text-xs text-gray-500 text-center">
+                    Funciona en móviles y computadoras con cámara
+                  </p>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="card p-6 md:col-span-2 lg:col-span-1">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                    <Barcode className="w-5 h-5 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Escanear Código de Barras</h3>
+                    <p className="text-xs text-gray-600">Coloca el código dentro del marco</p>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  {isMobile && (
+                    <div className="flex items-center space-x-2 text-xs text-green-600 bg-green-50 rounded-lg p-2">
+                      <Smartphone className="w-4 h-4" />
+                      <span>Dispositivo móvil detectado</span>
+                    </div>
+                  )}
+                  <button
+                    onClick={() => setShowBarcodeScanner(true)}
+                    className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={isSearching}
+                  >
+                    <Barcode className="w-5 h-5 inline-block mr-2" />
+                    Abrir Escáner de Barras
+                  </button>
+                  <p className="text-xs text-gray-500 text-center">
+                    Compatible con formatos comunes (Code128, EAN)
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Example Format */}
@@ -741,6 +783,15 @@ export default function VerificationCard() {
             onScan={handleQRScan}
             onClose={() => setShowScanner(false)}
             onError={handleScannerError}
+          />
+        )}
+
+        {/* Barcode Scanner Modal */}
+        {showBarcodeScanner && (
+          <BarcodeScanner
+            onScan={handleBarcodeScan}
+            onClose={() => setShowBarcodeScanner(false)}
+            onError={(msg) => setError(msg)}
           />
         )}
 
