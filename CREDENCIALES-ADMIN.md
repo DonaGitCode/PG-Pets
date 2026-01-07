@@ -10,8 +10,8 @@ Producción: https://steadyguardians.com/adminsg
 
 ### Credenciales
 ```
-Usuario: admin@steadyguardians.com
-Contraseña: SteadyGuardians2026!
+Usuario (ADMIN_USERNAME): admin@steadyguardians.com
+Contraseña (ADMIN_PASSWORD): SteadyGuardians2026!
 ```
 
 ## 🔒 Sistema de Autenticación
@@ -23,11 +23,10 @@ Contraseña: SteadyGuardians2026!
 - Contraseña almacenada en variable de entorno `ADMIN_PASSWORD`
 - No se expone la contraseña al navegador
 
-**2. Tokens de Sesión**
-- Al iniciar sesión, el servidor genera un token JWT en base64
-- Token válido por 24 horas
+**2. Tokens de Sesión (JWT firmado)**
+- Al iniciar sesión, el servidor genera un JWT firmado (HS256) con vigencia de 24h
 - Se almacena en sessionStorage del navegador
-- Se envía en header Authorization en cada petición
+- Se envía en el header Authorization en cada petición
 
 **3. Validación de Permisos**
 - Todas las operaciones CRUD requieren token válido
@@ -37,11 +36,11 @@ Contraseña: SteadyGuardians2026!
 ### Flujo de Autenticación
 
 ```
-1. Usuario ingresa contraseña
+1. Usuario ingresa **correo y contraseña**
    ↓
 2. POST /api/admin/auth
-   - Servidor valida contraseña
-   - Genera token firmado
+   - Servidor valida **correo + contraseña** contra `ADMIN_USERNAME` y `ADMIN_PASSWORD`
+   - Genera JWT firmado con `JWT_SECRET` (expira en 24h)
    ↓
 3. Cliente guarda token en sessionStorage
    ↓
@@ -58,8 +57,8 @@ Contraseña: SteadyGuardians2026!
 **Login**
 ```typescript
 POST /api/admin/auth
-Body: { password: string }
-Response: { success: true, token: string }
+Body: { email: string; password: string }
+Response: { success: true; token: string }
 ```
 
 **Verificar Token**
@@ -156,6 +155,13 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
    ```bash
    echo ".env.local" >> .gitignore
    ```
+
+5. **Configurar variables en el hosting (Producción y Preview)**
+- `ADMIN_USERNAME`
+- `ADMIN_PASSWORD`
+- `JWT_SECRET`
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 
 4. **Configurar Variables en Producción**
    - Vercel/Netlify: Panel de configuración → Environment Variables
