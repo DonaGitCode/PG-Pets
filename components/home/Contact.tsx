@@ -18,23 +18,40 @@ export default function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
-
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        program: '',
-        message: ''
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
-    }, 3000)
+
+      const data = await response.json()
+
+      if (data.success) {
+        setIsSubmitted(true)
+        
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setIsSubmitted(false)
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            program: '',
+            message: ''
+          })
+        }, 3000)
+      } else {
+        alert('Error al enviar el mensaje. Por favor intenta de nuevo o contáctanos por WhatsApp.')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      alert('Error al enviar el mensaje. Por favor intenta de nuevo o contáctanos por WhatsApp.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
