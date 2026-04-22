@@ -100,11 +100,11 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-2">
                 <MapPin className="w-5 h-5 text-primary-400 flex-shrink-0 mt-0.5" />
-                <span className="text-sm">Sede Principal: Cl. 134 #1542, Usaquén, Bogotá<br/>Cobertura Nacional</span>
+                <span className="text-sm">Sede Principal: Bogotá<br/>Cobertura Nacional</span>
               </li>
               <li className="flex items-start space-x-2">
                 <Phone className="w-5 h-5 text-primary-400 flex-shrink-0 mt-0.5" />
-                <span className="text-sm">+57 318 840 1253</span>
+                <span className="text-sm">+57 </span>
               </li>
               <li className="flex items-start space-x-2">
                 <Mail className="w-5 h-5 text-primary-400 flex-shrink-0 mt-0.5" />
