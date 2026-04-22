@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
 
 export default function Contact() {
+  const whatsappNumber = '573152371322'
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,47 +15,61 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const programNames: Record<string, string> = {
+    'apoyo-emocional': 'Apoyo Emocional',
+    'servicio': 'Perro de Servicio',
+    'lazarillo': 'Perro Lazarillo (Guía)',
+    'alerta-medica': 'Alerta Médica',
+    'evaluacion': 'Evaluación Conductual',
+    'otro': 'Otro / No estoy seguro'
+  }
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
+      const programName = programNames[formData.program] || 'No especificado'
+      const whatsappMessageParts = [
+        'Hola, quiero recibir más información.',
+        '',
+        `Nombre: ${formData.name}`,
+        `Email: ${formData.email}`,
+        `WhatsApp / Teléfono: ${formData.phone}`,
+        `Programa de interés: ${programName}`,
+      ]
 
-      const data = await response.json()
-
-      if (data.success) {
-        setIsSubmitted(true)
-        
-        // Reset form after 3 seconds
-        setTimeout(() => {
-          setIsSubmitted(false)
-          setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            program: '',
-            message: ''
-          })
-        }, 3000)
-      } else {
-        alert('Error al enviar el mensaje. Por favor intenta de nuevo o contáctanos por WhatsApp.')
+      if (formData.message) {
+        whatsappMessageParts.push(`Mensaje: ${formData.message}`)
       }
+
+      const whatsappMessage = whatsappMessageParts.join('\n')
+
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
+
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
+
+      setIsSubmitted(true)
+
+      setTimeout(() => {
+        setIsSubmitted(false)
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          program: '',
+          message: ''
+        })
+      }, 3000)
     } catch (error) {
       console.error('Error:', error)
-      alert('Error al enviar el mensaje. Por favor intenta de nuevo o contáctanos por WhatsApp.')
+      alert('No pudimos abrir WhatsApp. Intenta de nuevo o escríbenos directamente.')
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -129,10 +144,10 @@ export default function Contact() {
                     <CheckCircle className="w-8 h-8 text-green-600" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    ¡Mensaje enviado!
+                    ¡WhatsApp listo!
                   </h3>
                   <p className="text-gray-600">
-                    Gracias por contactarnos. Te responderemos pronto por WhatsApp o email.
+                    Te abrimos WhatsApp con tus datos para que envíes el mensaje directamente.
                   </p>
                 </div>
               ) : (
@@ -241,7 +256,7 @@ export default function Contact() {
                         </>
                       ) : (
                         <>
-                          Enviar mensaje
+                          Ir a WhatsApp
                           <Send className="ml-2 w-5 h-5" />
                         </>
                       )}
@@ -249,8 +264,7 @@ export default function Contact() {
                   </div>
 
                   <p className="text-sm text-gray-500 text-center">
-                    Al enviar este formulario, aceptas que nos pongamos en contacto contigo 
-                    para discutir tu consulta.
+                    Al enviar este formulario, se abrirá WhatsApp con tus datos para continuar la conversación.
                   </p>
                 </form>
               )}
