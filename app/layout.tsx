@@ -8,7 +8,7 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Steady Guardians - Entrenamiento de Perros de Asistencia | Usaquén, Bogotá',
+  title: 'Steady Guardians - Entrenamiento de Perros de Asistencia | Colombia',
   description: 'Entrenamiento profesional de perros de asistencia, servicio, lazarillo y alerta médica en toda Colombia. Sede en Cl. 134 #1542, Usaquén, Bogotá. Programas certificados con verificación ID/QR.',
 }
 
