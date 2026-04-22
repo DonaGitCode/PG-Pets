@@ -45,6 +45,7 @@ Crea el archivo `.env.local` con:
 NEXT_PUBLIC_SUPABASE_URL=https://tu-proyecto.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_clave_anon_aqui
 NEXT_PUBLIC_WHATSAPP_NUMBER=573152371322
+RESEND_API_KEY=tu_resend_api_key_aqui
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
