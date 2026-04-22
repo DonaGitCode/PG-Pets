@@ -628,12 +628,12 @@ export default function TermsAndConditions() {
               <h3 className="font-semibold text-gray-900 mb-4">Steady Guardians Colombia</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
                 <div>
-                  <p className="font-semibold mb-1">Sede Principal:</p>
-                  <p>Cl. 134 #1542, Usaquén, Bogotá, Colombia</p>
+                  <p className="font-semibold mb-1">Ubicación</p>
+                  <p>Colombia</p>
                 </div>
                 <div>
                   <p className="font-semibold mb-1">Cobertura:</p>
-                  <p>Nacional (todas las ciudades de Colombia)</p>
+                  <p>Nacional</p>
                 </div>
                 <div>
                   <p className="font-semibold mb-1">Correo electrónico:</p>
@@ -643,7 +643,7 @@ export default function TermsAndConditions() {
                 <div>
                   <p className="font-semibold mb-1">Teléfono:</p>
                   <p>+57 (601) 123-4567</p>
-                  <p>WhatsApp: +57 318 840 1253</p>
+                  <p>WhatsApp: +57 315 237 1322</p>
                 </div>
                 <div>
                   <p className="font-semibold mb-1">Sitio web:</p>

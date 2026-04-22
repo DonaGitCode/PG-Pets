@@ -85,9 +85,8 @@ export default function Contact() {
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Ubicación</h3>
               <p className="text-gray-600 text-sm">
-                Cl. 134 #1542, Usaquén, Bogotá<br />
-                Cobertura: Nacional<br />
-                Colombia
+                Colombia<br />
+                Cobertura: Nacional
               </p>
             </div>
 
@@ -96,8 +95,8 @@ export default function Contact() {
                 <Phone className="w-6 h-6 text-primary-600" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Teléfono</h3>
-              <a href="tel:+573188401253" className="text-primary-600 hover:text-primary-700 text-sm font-medium">
-                +57 318 840 1253
+              <a href="tel:+573152371322" className="text-primary-600 hover:text-primary-700 text-sm font-medium">
+                +57 315 237 1322
               </a>
             </div>
 
@@ -185,7 +184,7 @@ export default function Contact() {
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                        placeholder="+57 318 840 1253"
+                        placeholder="+57 315 237 1322"
                       />
                     </div>
 

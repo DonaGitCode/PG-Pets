@@ -60,7 +60,7 @@ export default function Hero() {
                 <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" />
                 <div>
                   <h3 className="font-semibold text-gray-900">Cobertura nacional</h3>
-                  <p className="text-sm text-gray-600">Sede en Bogotá</p>
+                  <p className="text-sm text-gray-600">Colombia</p>
                 </div>
               </div>
             </div>

@@ -64,8 +64,8 @@ export default function PrivacyPolicy() {
                 
                 <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-6">
                   <p className="font-semibold text-gray-900 mb-2">Steady Guardians Colombia</p>
-                  <p className="text-sm text-gray-700">Sede Principal: Cl. 134 #1542, Usaquén, Bogotá, Colombia</p>
-                  <p className="text-sm text-gray-700">Cobertura: Nacional (todas las ciudades de Colombia)</p>
+                  <p className="text-sm text-gray-700">Colombia</p>
+                  <p className="text-sm text-gray-700">Cobertura: Nacional</p>
                   <p className="text-sm text-gray-700">Correo electrónico: privacidad@steadyguardians.co</p>
                   <p className="text-sm text-gray-700">Teléfono: +57 (601) 123-4567</p>
                   <p className="text-sm text-gray-700">Sitio web: www.steadyguardians.co</p>
@@ -317,7 +317,8 @@ export default function PrivacyPolicy() {
                   <ul className="text-sm text-gray-700 space-y-1">
                     <li><strong>Correo electrónico:</strong> privacidad@steadyguardians.co</li>
                     <li><strong>Formulario web:</strong> <Link href="/contact" className="text-primary-600 hover:underline">Formulario de contacto</Link></li>
-                    <li><strong>Correo postal:</strong> Cl. 134 #1542, Usaquén, Bogotá D.C.</li>
+                    <li><strong>Ubicación:</strong> Colombia</li>
+                    <li><strong>Cobertura:</strong> Nacional</li>
                   </ul>
                   <p className="text-sm text-gray-700 mt-3">
                     Responderemos a su solicitud dentro de los 15 días hábiles siguientes a la recepción.
@@ -438,9 +439,10 @@ export default function PrivacyPolicy() {
                     <p><strong>Oficial de Privacidad:</strong> Departamento de Protección de Datos</p>
                     <p><strong>Correo electrónico:</strong> <a href="mailto:privacidad@steadyguardians.co" className="text-primary-600 hover:underline">privacidad@steadyguardians.co</a></p>
                     <p><strong>Teléfono:</strong> +57 (601) 123-4567</p>
-                    <p><strong>WhatsApp:</strong> +57 318 840 1253</p>
+                    <p><strong>WhatsApp:</strong> +57 315 237 1322</p>
                     <p><strong>Horario de atención:</strong> Lunes a Viernes, 8:00 AM - 6:00 PM (hora de Colombia)</p>
-                    <p><strong>Dirección postal:</strong> Cl. 134 #1542, Usaquén, Bogotá D.C., Colombia</p>
+                    <p><strong>Ubicación:</strong> Colombia</p>
+                    <p><strong>Cobertura:</strong> Nacional</p>
                   </div>
                 </div>
 

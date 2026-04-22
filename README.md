@@ -2,7 +2,7 @@
 
 ## 📋 Descripción
 
-Plataforma web profesional para Steady Guardians, organización colombiana especializada en entrenamiento de perros de asistencia, con sede en Pasto, Nariño.
+Plataforma web profesional para Steady Guardians, organización colombiana especializada en entrenamiento de perros de asistencia, con cobertura nacional.
 
 ### Características principales:
 - ✅ Landing page profesional estilo Petfly
@@ -44,7 +44,7 @@ Crea el archivo `.env.local` con:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://tu-proyecto.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_clave_anon_aqui
-NEXT_PUBLIC_WHATSAPP_NUMBER=573188401253
+NEXT_PUBLIC_WHATSAPP_NUMBER=573152371322
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
@@ -245,7 +245,7 @@ Asegúrate de configurar en tu plataforma de hosting:
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://tu-proyecto.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_clave_anon
-NEXT_PUBLIC_WHATSAPP_NUMBER=573188401253
+NEXT_PUBLIC_WHATSAPP_NUMBER=573152371322
 NEXT_PUBLIC_SITE_URL=https://tu-dominio.com
 ```
 
@@ -316,9 +316,10 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 ## 📞 Soporte
 
 Para soporte técnico o consultas sobre el entrenamiento:
-- WhatsApp: +57 318 840 1253
+- WhatsApp: +57 315 237 1322
 - Email: info@steadyguardians.com
-- Ubicación: Pasto, Nariño, Colombia
+- Ubicación: Colombia
+- Cobertura: Nacional
 
 ## 📝 Licencia
 
